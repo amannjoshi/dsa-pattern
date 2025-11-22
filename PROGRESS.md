@@ -2,7 +2,7 @@
 
 **Current Date:** November 22, 2025
 **Project Name:** SereneCode (DSA Preparation Platform)
-**Status:** Phase 1 Complete (Foundation & Design)
+**Status:** Phase 2 Complete (Backend & Auth)
 
 ## 🚀 Quick Start for New Developers
 
@@ -22,12 +22,19 @@ If you are picking up this project, simply tell Copilot:
 - [x] **Design System**: Configured in `globals.css` (CSS Variables) and `tailwind.config.ts`.
 - [x] **Landing Page**: Implemented with `framer-motion` animations to match the "premium" feel.
 - [x] **Hero Visuals**: "Glorious light" effect, glassmorphism cards, and sliding text marquee (FAANG + Finance).
-- [x] **Data Structure**: `content/problems.json` created for easy problem management.
+- [x] **Footer**: Added "Connect" section with email, location (India), and standard SaaS links.
+- [x] **Database**: Set up Supabase (PostgreSQL).
+- [x] **Auth**: Integrate Supabase Auth for user authentication.
+- [x] **Dashboard**: Create the authenticated user view with Sidebar navigation.
+- [x] **Data Sync**: Write a script to sync `content/problems.json` to the database.
+- [x] **Problems List**: Create the dashboard page to list all problems from the DB.
+- [x] **Single Problem View**: Create the coding workspace with Monaco Editor and LeetCode integration.
 
-### Next Steps (Phase 2: Backend & Auth)
-1.  **Database**: Set up Supabase or Neon (PostgreSQL).
-2.  **Auth**: Integrate Clerk for user authentication.
-3.  **Data Sync**: Write a script to sync `content/problems.json` to the database.
+### Next Steps (Phase 3: Core Features)
+1.  **Progress Tracking**: Allow users to mark problems as "Solved" (Database relation: User <-> Problem).
+2.  **User Profile**: Show stats (e.g., "5/150 Solved").
+3.  **Payments**: Integrate Stripe for a "Pro" tier (SaaS requirement).
+4.  **Code Execution**: (Deferred) Integrate Piston/Judge0 for running code.
 
 ## 📝 Handover Notes
 - The **Landing Page** is fully responsive and animated. Do not change the design unless necessary.

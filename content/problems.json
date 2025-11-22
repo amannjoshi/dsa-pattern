@@ -5,7 +5,8 @@
     "difficulty": "Easy",
     "pattern": "Two Pointers",
     "companies": ["Google", "Amazon", "Facebook"],
-    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target."
+    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+    "leetcodeUrl": "https://leetcode.com/problems/two-sum/"
   },
   {
     "id": "container-with-most-water",
@@ -13,7 +14,8 @@
     "difficulty": "Medium",
     "pattern": "Two Pointers",
     "companies": ["Google", "Facebook", "Adobe"],
-    "description": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i])."
+    "description": "You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).",
+    "leetcodeUrl": "https://leetcode.com/problems/container-with-most-water/"
   },
   {
     "id": "sliding-window-maximum",
@@ -21,6 +23,7 @@
     "difficulty": "Hard",
     "pattern": "Sliding Window",
     "companies": ["Google", "Amazon"],
-    "description": "You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right."
+    "description": "You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right.",
+    "leetcodeUrl": "https://leetcode.com/problems/sliding-window-maximum/"
   }
 ]

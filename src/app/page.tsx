@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Code2, Terminal } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { Footer } from "@/components/Footer";
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -24,11 +26,11 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Sign In
             </Link>
             <Link 
-              href="#" 
+              href="/login" 
               className="text-sm font-medium bg-foreground text-background px-4 py-2 rounded-full hover:opacity-90 transition-opacity"
             >
               Sign Up
@@ -84,7 +86,7 @@ export default function Home() {
               className="mt-20 relative max-w-5xl mx-auto group"
             >
               {/* The "Glorious Light" Glow Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-blue-500/20 to-primary/20 rounded-2xl blur-2xl opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
+              <div className="absolute -inset-1 bg-linear-to-r from-primary/20 via-blue-500/20 to-primary/20 rounded-2xl blur-2xl opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
               <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/30 blur-[120px] rounded-full pointer-events-none opacity-60 mix-blend-screen" />
 
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 aspect-video backdrop-blur-sm flex items-center justify-center">
@@ -207,6 +209,8 @@ export default function Home() {
           </div>
         </section>
       </main>
+      
+      <Footer />
     </div>
   );
 }
