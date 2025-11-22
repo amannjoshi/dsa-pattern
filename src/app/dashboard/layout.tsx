@@ -12,7 +12,7 @@ import {
   MapPin,
   User
 } from 'lucide-react'
-import { SignOutButton } from './sign-out-button'
+import { SignOutButton } from '@/components/dashboard/SignOutButton'
 
 export default async function DashboardLayout({
   children,
