@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SereneCode - DSA Preparation Platform
+
+Find Your Calm in the Complexity. A professional, pattern-based Data Structures and Algorithms preparation platform.
+
+## Features
+
+- **Pattern-Based Learning**: Master the underlying patterns (Sliding Window, Two Pointers, etc.) instead of memorizing solutions.
+- **Serene Aesthetic**: A calm, distraction-free environment designed for deep focus.
+- **Progress Tracking**: Visual heatmaps and streak tracking (Coming Soon).
+- **Interactive Coding**: Solve problems directly in the browser (Coming Soon).
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 + Lucide React
+- **Deployment**: Vercel
+
+## Development Status
+
+**Current Phase:** Phase 1 (Foundation & Design) - **Completed**
+
+For detailed progress and next steps, please refer to [PROGRESS.md](./PROGRESS.md).
+
+## Handover Guide
+
+If you are a new developer (or a friend) picking up this project:
+
+1.  **Read `PROGRESS.md`**: It contains the exact state of the project and what needs to be done next.
+2.  **Use Copilot**: You can simply ask Copilot to "Read PROGRESS.md and continue" to resume work immediately.
 
 ## Getting Started
 
-First, run the development server:
+1.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content Management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Problems are currently stored in `content/problems.json`. You can add new problems there, and they will be integrated into the database in future updates.
