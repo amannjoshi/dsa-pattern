@@ -76,7 +76,7 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Visual Placeholder - Tree and Bench with Glorious Light Effect */}
+            {/* Visual Placeholder - FAANG Focus with Glorious Light Effect */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -87,14 +87,32 @@ export default function Home() {
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-blue-500/20 to-primary/20 rounded-2xl blur-2xl opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
               <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/30 blur-[120px] rounded-full pointer-events-none opacity-60 mix-blend-screen" />
 
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 aspect-video backdrop-blur-sm">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 aspect-video backdrop-blur-sm flex items-center justify-center">
                 <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent z-10" />
                 
-                {/* Serene Image with Light Effect */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=2500&auto=format&fit=crop')] bg-cover bg-center opacity-80 transition-transform duration-[2s] group-hover:scale-105"></div>
-                  {/* Light Shafts Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 mix-blend-overlay pointer-events-none" />
+                {/* Abstract Tech Background */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
+                
+                {/* FAANG Text Content */}
+                <div className="relative z-20 text-center space-y-12 p-8">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="space-y-2"
+                  >
+                    <h3 className="text-2xl md:text-3xl font-light text-muted-foreground tracking-wide">Target the Top 1%</h3>
+                    <p className="text-sm text-muted-foreground/60 uppercase tracking-[0.2em]">Master the patterns used at</p>
+                  </motion.div>
+
+                  <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                     {/* FAANG Companies */}
+                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#1877F2] transition-colors cursor-default">Meta</motion.span>
+                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#FF9900] transition-colors cursor-default">Amazon</motion.span>
+                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#A2AAAD] transition-colors cursor-default">Apple</motion.span>
+                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#E50914] transition-colors cursor-default">Netflix</motion.span>
+                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#34A853] transition-colors cursor-default">Google</motion.span>
+                  </div>
                 </div>
                 
                 {/* Floating UI Elements - DSA Context */}
@@ -102,7 +120,7 @@ export default function Home() {
                    <motion.div 
                      initial={{ x: -20, opacity: 0 }}
                      animate={{ x: 0, opacity: 1 }}
-                     transition={{ delay: 1.2 }}
+                     transition={{ delay: 1.6 }}
                      className="bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl flex items-center gap-4 hover:bg-black/70 transition-colors"
                    >
                       <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 border border-green-500/30">
@@ -110,22 +128,7 @@ export default function Home() {
                       </div>
                       <div>
                         <div className="text-xs text-zinc-400 font-medium uppercase tracking-wider">Status</div>
-                        <div className="text-sm font-semibold text-white">All Test Cases Passed</div>
-                      </div>
-                   </motion.div>
-
-                   <motion.div 
-                     initial={{ x: -20, opacity: 0 }}
-                     animate={{ x: 0, opacity: 1 }}
-                     transition={{ delay: 1.4 }}
-                     className="bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl flex items-center gap-4 hover:bg-black/70 transition-colors"
-                   >
-                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 border border-blue-500/30">
-                        <Terminal className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-zinc-400 font-medium uppercase tracking-wider">Current Pattern</div>
-                        <div className="text-sm font-semibold text-white">Sliding Window</div>
+                        <div className="text-sm font-semibold text-white">Offer Received</div>
                       </div>
                    </motion.div>
                 </div>
@@ -134,7 +137,7 @@ export default function Home() {
                 <motion.div 
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 1.6 }}
+                  transition={{ delay: 1.8 }}
                   className="absolute top-8 right-8 z-20 hidden md:block"
                 >
                   <div className="bg-black/80 backdrop-blur-md p-5 rounded-xl border border-white/10 shadow-2xl font-mono text-xs text-zinc-300">
@@ -144,11 +147,12 @@ export default function Home() {
                       <div className="w-3 h-3 rounded-full bg-green-500/50" />
                     </div>
                     <div className="space-y-1 opacity-80">
-                      <p><span className="text-purple-400">def</span> <span className="text-blue-400">max_area</span>(height):</p>
-                      <p className="pl-4">left, right = <span className="text-orange-400">0</span>, <span className="text-purple-400">len</span>(height) - <span className="text-orange-400">1</span></p>
-                      <p className="pl-4">res = <span className="text-orange-400">0</span></p>
-                      <p className="pl-4"><span className="text-purple-400">while</span> left &lt; right:</p>
-                      <p className="pl-8 text-zinc-500"># Calculate area...</p>
+                      <p><span className="text-purple-400">class</span> <span className="text-yellow-400">Solution</span>:</p>
+                      <p className="pl-4"><span className="text-purple-400">def</span> <span className="text-blue-400">twoSum</span>(self, nums, target):</p>
+                      <p className="pl-8">seen = {}</p>
+                      <p className="pl-8"><span className="text-purple-400">for</span> i, n <span className="text-purple-400">in</span> <span className="text-purple-400">enumerate</span>(nums):</p>
+                      <p className="pl-12"><span className="text-purple-400">if</span> target - n <span className="text-purple-400">in</span> seen:</p>
+                      <p className="pl-16"><span className="text-purple-400">return</span> [seen[target-n], i]</p>
                     </div>
                   </div>
                 </motion.div>
