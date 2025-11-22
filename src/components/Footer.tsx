@@ -56,8 +56,8 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <a href="mailto:contact@serenecode.com" className="hover:text-foreground transition-colors">
-                  contact@serenecode.com
+                <a href="mailto:workforrhody7@gmail.com" className="hover:text-foreground transition-colors">
+                  workforrhody7@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
