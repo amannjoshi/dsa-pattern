@@ -14,13 +14,60 @@ create table if not exists problems (
 -- Enable Row Level Security (RLS)
 alter table problems enable row level security;
 
--- Create a policy that allows everyone to read problems
-create policy "Public problems are viewable by everyone"
+-- SECURITY: Only authenticated users can view problems (SaaS Model)
+drop policy if exists "Public problems are viewable by everyone" on problems;
+create policy "Authenticated users can view problems"
   on problems for select
+  to authenticated
   using ( true );
 
--- Create a policy that allows only authenticated users to insert/update (optional, for admin)
--- For now, we'll allow service_role (which our script uses) to bypass RLS automatically.
+-- Create user_progress table
+create table if not exists user_progress (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references auth.users(id) on delete cascade not null,
+  problem_slug text references problems(slug) on delete cascade not null,
+  status text check (status in ('solved', 'attempted')) not null,
+  solved_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  unique(user_id, problem_slug)
+);
 
--- MIGRATION: Add leetcode_link column (Run this if you already created the table)
--- alter table problems add column leetcode_link text;
+-- Enable RLS
+alter table user_progress enable row level security;
+
+-- SECURITY: Users can ONLY access their own progress data
+create policy "Users can view their own progress"
+  on user_progress for select
+  to authenticated
+  using ( auth.uid() = user_id );
+
+create policy "Users can insert their own progress"
+  on user_progress for insert
+  to authenticated
+  with check ( auth.uid() = user_id );
+
+create policy "Users can update their own progress"
+  on user_progress for update
+  to authenticated
+  using ( auth.uid() = user_id );
+
+-- PUBLIC ACCESS: Allow anyone to see the list (Title + Link), but NOT the description
+-- This function allows unauthenticated users to fetch the list without seeing the 'description' column.
+create or replace function get_public_problems()
+returns table (
+  slug text,
+  title text,
+  difficulty text,
+  category text,
+  companies text[],
+  leetcode_link text
+)
+language sql
+security definer -- Bypasses RLS
+as $$
+  select slug, title, difficulty, category, companies, leetcode_link
+  from problems;
+$$;
+
+-- Grant access to public (anon) and logged in users
+grant execute on function get_public_problems() to anon, authenticated;
+

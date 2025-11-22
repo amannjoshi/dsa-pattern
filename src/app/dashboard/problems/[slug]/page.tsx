@@ -2,9 +2,10 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Play, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Play } from "lucide-react";
 import CodeEditor from "@/components/Workspace/CodeEditor";
 import { LeetCodeIcon } from "@/components/icons/LeetCodeIcon";
+import { SubmitButton } from "@/components/dashboard/SubmitButton";
 
 export default async function ProblemPage({
   params,
@@ -13,6 +14,8 @@ export default async function ProblemPage({
 }) {
   const { slug } = await params;
   const supabase = await createClient();
+
+  const { data: { user } } = await supabase.auth.getUser();
 
   const { data: problem } = await supabase
     .from("problems")
@@ -23,6 +26,16 @@ export default async function ProblemPage({
   if (!problem) {
     notFound();
   }
+
+  // Check if user has solved this problem
+  const { data: progress } = await supabase
+    .from("user_progress")
+    .select("status")
+    .eq("user_id", user?.id)
+    .eq("problem_slug", slug)
+    .single();
+
+  const isSolved = progress?.status === "solved";
 
   const difficultyColor =
     problem.difficulty === "Easy"
@@ -79,10 +92,7 @@ function solution(args) {
             <Play className="w-4 h-4" />
             Run Code
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-all text-sm font-medium shadow-lg shadow-blue-500/20">
-            <CheckCircle2 className="w-4 h-4" />
-            Submit
-          </button>
+          <SubmitButton slug={problem.slug} isSolved={isSolved} />
         </div>
       </header>
 

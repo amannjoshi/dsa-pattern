@@ -17,6 +17,11 @@
 
 - [x] Ensure Documentation is Complete
 
+## Content & Features
+- [x] Bulk Import Problems (CSV)
+- [x] Enrich Problem Data (Links, Companies)
+- [ ] Verify Public Teaser Mode
+
 <!--
 ## Execution Guidelines
 PROGRESS TRACKING:

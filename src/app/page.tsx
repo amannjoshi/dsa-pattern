@@ -15,14 +15,14 @@ export default function Home() {
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 font-semibold text-xl tracking-tight">
             <Code2 className="w-6 h-6 text-primary" />
-            <span>SereneCode</span>
+            <span>W Code</span>
           </div>
           
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-            <Link href="#" className="hover:text-foreground transition-colors">Product</Link>
-            <Link href="#" className="hover:text-foreground transition-colors">Solutions</Link>
-            <Link href="#" className="hover:text-foreground transition-colors">Pricing</Link>
-            <Link href="#" className="hover:text-foreground transition-colors">Resources</Link>
+            <Link href="#features" className="hover:text-foreground transition-colors">Product</Link>
+            <Link href="#solutions" className="hover:text-foreground transition-colors">Solutions</Link>
+            <Link href="#pricing" className="hover:text-foreground transition-colors">Pricing</Link>
+            <Link href="#resources" className="hover:text-foreground transition-colors">Resources</Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -69,12 +69,12 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
               >
-                <button className="px-8 py-3 bg-foreground text-background rounded-lg font-medium hover:opacity-90 transition-all flex items-center gap-2">
-                  Book a Free Demo
-                </button>
-                <button className="px-8 py-3 border border-border rounded-lg font-medium hover:bg-secondary/50 transition-all flex items-center gap-2">
-                  Watch Overview
-                </button>
+                <Link href="/dashboard" className="px-8 py-3 bg-foreground text-background rounded-lg font-medium hover:opacity-90 transition-all flex items-center gap-2">
+                  Try Pattern
+                </Link>
+                <Link href="/login" className="px-8 py-3 border border-border rounded-lg font-medium hover:bg-secondary/50 transition-all flex items-center gap-2">
+                  Sign in with Google
+                </Link>
               </motion.div>
             </div>
 

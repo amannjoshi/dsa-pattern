@@ -5,10 +5,22 @@ import { Search, Filter, ArrowRight, CheckCircle2 } from 'lucide-react'
 export default async function ProblemsPage() {
   const supabase = await createClient()
   
+  const { data: { user } } = await supabase.auth.getUser()
+
   const { data: problems, error } = await supabase
     .from('problems')
     .select('*')
     .order('created_at', { ascending: true })
+
+  // Fetch user progress
+  const { data: progress } = await supabase
+    .from('user_progress')
+    .select('problem_slug, status')
+    .eq('user_id', user?.id)
+
+  const solvedProblems = new Set(
+    progress?.filter(p => p.status === 'solved').map(p => p.problem_slug)
+  )
 
   if (error) {
     return <div className="p-8 text-red-400">Error loading problems: {error.message}</div>
@@ -49,6 +61,9 @@ export default async function ProblemsPage() {
                   <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
                     {problem.title}
                   </h3>
+                  {solvedProblems.has(problem.slug) && (
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  )}
                   <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium border ${
                     problem.difficulty === 'Easy' ? 'bg-green-500/10 text-green-400 border-green-500/20' :
                     problem.difficulty === 'Medium' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20' :

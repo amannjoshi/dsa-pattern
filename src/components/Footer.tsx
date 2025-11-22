@@ -10,7 +10,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-semibold text-xl tracking-tight">
               <Code2 className="w-6 h-6 text-primary" />
-              <span>SereneCode</span>
+              <span>W Code</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Master Data Structures & Algorithms with clarity and calm. Your journey to the top 1% starts here.
@@ -22,7 +22,7 @@ export function Footer() {
               <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="w-5 h-5" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="https://www.linkedin.com/in/yogendra-bisht/" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Linkedin className="w-5 h-5" />
               </Link>
             </div>
@@ -71,7 +71,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border/40 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} SereneCode. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} W Code. All rights reserved.</p>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
