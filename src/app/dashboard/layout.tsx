@@ -36,7 +36,7 @@ export default async function DashboardLayout({
         <div className="p-6 border-b border-border/40">
           <Link href="/dashboard" className="flex items-center gap-2 font-semibold text-xl tracking-tight">
             <Code2 className="w-6 h-6 text-primary" />
-            <span>SereneCode</span>
+            <span>W Code</span>
           </Link>
         </div>
 
@@ -52,6 +52,10 @@ export default async function DashboardLayout({
           <Link href="/dashboard/progress" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
             <Trophy className="w-5 h-5" />
             My Progress
+          </Link>
+          <Link href="/dashboard/profile" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
+            <User className="w-5 h-5" />
+            Profile
           </Link>
           <div className="pt-4 pb-2">
             <p className="px-4 text-xs font-semibold text-muted-foreground/50 uppercase tracking-wider">Account</p>

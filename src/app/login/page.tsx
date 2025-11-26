@@ -65,7 +65,7 @@ export default function LoginPage() {
           <div className="flex flex-col items-center mb-8">
             <Link href="/" className="flex items-center gap-2 font-semibold text-2xl tracking-tight mb-2 hover:opacity-80 transition-opacity">
               <Code2 className="w-8 h-8 text-primary" />
-              <span>SereneCode</span>
+              <span>W Code</span>
             </Link>
             <p className="text-muted-foreground text-sm text-center">
               {isLogin ? "Welcome back to your flow state." : "Begin your journey to mastery."}

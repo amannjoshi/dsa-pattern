@@ -644,6 +644,17 @@ async function seedEnrichedProblems() {
 
     if (!title) continue
 
+    // Extract category and sub_pattern from pattern
+    // Pattern format: "Two Pointers - Converging" -> category: "Two Pointers", sub_pattern: "Converging"
+    let category = pattern
+    let sub_pattern = pattern
+    
+    if (pattern && pattern.includes(' - ')) {
+      const parts = pattern.split(' - ')
+      category = parts[0].trim()
+      sub_pattern = pattern // Keep the full pattern as sub_pattern for grouping
+    }
+
     // Look up enriched data
     let enriched = problemData[title]
 
@@ -668,7 +679,8 @@ async function seedEnrichedProblems() {
         slug,
         title,
         difficulty,
-        category: pattern,
+        category,
+        sub_pattern,
         description: enriched.description,
         companies: enriched.companies,
         leetcode_link: enriched.url
