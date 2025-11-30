@@ -1,21 +1,47 @@
 # Project Progress & Handover Guide
 
-**Last Updated:** November 30, 2025
+**Last Updated:** November 30, 2025 (Evening Session)
 **Project Name:** W Code (DSA Preparation Platform)
-**Status:** Phase 5 Complete (Public Explore Page & UI Improvements) | Deployed on Vercel
+**Status:** Phase 6 IN PROGRESS (Multi-Language Code Editor) | Deployed on Vercel
 
 ## 🚀 Quick Start for New Developers
 
 If you are picking up this project, simply tell Copilot:
 > "Analyze PROGRESS.md and continue from where we left off."
 
-## 📋 What Was Done (Latest Session - Nov 30, 2025)
+## 📋 What Was Done (Latest Session - Nov 30, 2025 Evening)
 
-1. **Public Explore Page** (`/explore`) - Users can browse all 130+ problems WITHOUT signing in
-2. **Updated Middleware** - Added `/explore` to public routes (no login required)
-3. **Replaced "Trusted By" Section** - Now shows Feature Highlights (93+ Patterns, FAANG Ready, etc.)
-4. **Updated Navbar** - Added "Explore" link, simplified navigation
-5. **Hero CTA Buttons** - Changed "Try Pattern" → "Explore Problems" with arrow icon
+### ✅ COMPLETED THIS SESSION:
+1. **Multi-Language Code Editor** - DONE! 
+   - Location: `src/components/Workspace/MultiLangCodeEditor.tsx`
+   - Supports: Python, Java, C++, JavaScript
+   - Uses **Piston API** (FREE, no API key needed, no self-hosting)
+   - API Route: `src/app/api/execute/route.ts`
+
+2. **"Solve" Button on Explore Page** - DONE!
+   - Non-logged users see "Solve" button next to each problem
+   - Clicking redirects to `/login?redirect=/dashboard/problems/{slug}`
+   - After login, user goes directly to that problem
+
+3. **Login Redirect System** - DONE!
+   - Login page reads `?redirect=` query param
+   - Google OAuth passes redirect to callback
+   - Auth callback redirects to the intended problem page
+
+4. **Deleted Old Code** - Cleaned up unused `CodeEditor.tsx`
+
+### ⚠️ KNOWN ISSUE - OUTPUT NOT SHOWING:
+**FIXED!** The output display bug has been resolved. Changes made:
+1. Fixed output panel rendering logic in `MultiLangCodeEditor.tsx`
+2. Added TLE (Time Limit Exceeded) detection
+3. Added MLE (Memory Limit Exceeded) detection  
+4. Added better error messages with emojis (🔴 for errors, ⏱️ for TLE, 💾 for MLE)
+
+If output still doesn't show:
+1. Open browser DevTools (F12) → Network tab
+2. Run code and check if `/api/execute` returns 200
+3. Check Console for any JavaScript errors
+4. The Piston API might be slow (1-2 seconds) - wait for response
 
 ## 🎨 Design Philosophy (Strict)
 - **Aesthetic:** "Find Your Calm in the Complexity".
@@ -72,13 +98,218 @@ WHERE id NOT IN (SELECT id FROM profiles)
 ON CONFLICT (id) DO NOTHING;
 ```
 
-### Next Steps (Phase 5: Monetization & Polish)
-- [ ] **Improve Feature Highlights UI** - Make the 4 cards look more premium/professional
+### Next Steps (Phase 6 Continued)
+- [x] **Multi-Language Code Editor** - ✅ DONE (Python, Java, C++, JS with Piston API)
+- [x] **Fix Output Display Bug** - ✅ FIXED (output now shows correctly)
+- [x] **TLE/MLE Detection** - ✅ DONE (shows Time Limit Exceeded, Memory Limit Exceeded)
 - [ ] **Payments**: Integrate Stripe for a "Pro" tier (SaaS requirement).
 - [ ] **Forgot Password**: Add password reset flow for email/password users.
 - [ ] **SEO & Metadata**: Add OpenGraph tags and metadata for social sharing.
-- [ ] **Code Execution**: (Deferred) Integrate Piston/Judge0 for running code directly in the browser.
 - [ ] **Mobile Responsiveness**: Audit dashboard on mobile devices.
+- [ ] **Platform Expansion**: Extend beyond DSA to other CS courses (System Design, DBMS, OS, etc.)
+
+---
+
+## 🚀 FUTURE UPGRADE: LeetCode-Style Test Case System
+
+### Current State (Working ✅)
+The code editor currently works as a **free-form sandbox**:
+- User writes complete code (with `main()` function or entry point)
+- User clicks "Run" → code executes → output shown
+- User manually checks if output is correct
+
+### Future Goal: Pre-defined Test Cases (Like LeetCode)
+Transform the editor into a **proper judge system** where:
+1. **Each problem has pre-defined test cases** stored in database
+2. **User only writes the solution function** (no need to write `main()` or input handling)
+3. **System automatically runs test cases** against user's function
+4. **Shows verdict**: ✅ Accepted, ❌ Wrong Answer, with input/output comparison
+
+### How to Implement (For Future Developer)
+
+#### Step 1: Update Database Schema
+Add test cases to the `problems` table:
+```sql
+ALTER TABLE problems ADD COLUMN test_cases jsonb DEFAULT '[]';
+
+-- Example test_cases format:
+-- [
+--   {"input": "[2,7,11,15], 9", "expected": "[0,1]"},
+--   {"input": "[3,2,4], 6", "expected": "[1,2]"},
+--   {"input": "[3,3], 6", "expected": "[0,1]"}
+-- ]
+```
+
+#### Step 2: Create Function Templates
+Each problem needs a **function signature template** for each language:
+```python
+# Python template for Two Sum
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # User writes code here
+        pass
+```
+
+```java
+// Java template for Two Sum
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        // User writes code here
+    }
+}
+```
+
+#### Step 3: Update API to Run Test Cases
+Modify `/api/execute/route.ts` to:
+1. Accept `problemSlug` parameter
+2. Fetch test cases from database
+3. Wrap user's function with test runner code
+4. Execute each test case
+5. Compare output with expected
+6. Return verdict (Accepted/Wrong Answer/Runtime Error)
+
+#### Step 4: Update UI
+- Show test case results (✅ Passed, ❌ Failed)
+- Show input/expected/actual for failed cases
+- Add "Submit" button (runs all test cases)
+- Add "Run" button (runs sample test case only)
+
+### Example Flow (Future)
+1. User opens "Two Sum" problem
+2. Editor shows function template: `def twoSum(self, nums, target):`
+3. User writes solution inside the function
+4. User clicks "Run" → runs against sample test case
+5. User clicks "Submit" → runs against all hidden test cases
+6. Shows: "3/3 test cases passed ✅ Accepted!"
+
+### Files to Modify
+| File | Changes Needed |
+|------|----------------|
+| `problems` table | Add `test_cases` and `function_template` columns |
+| `MultiLangCodeEditor.tsx` | Show function template, add Submit button |
+| `/api/execute/route.ts` | Add test case runner logic |
+| `[slug]/page.tsx` | Fetch test cases from database |
+
+---
+
+## 🎯 FUTURE UPGRADE: Dashboard vs Progress Page Separation
+
+### Current State (Both pages are same)
+Currently `/dashboard` and `/dashboard/progress` show the **same information**:
+- Problems solved count
+- Difficulty breakdown (Easy/Medium/Hard)
+- Streak and stats
+
+### Future Goal: Separate Dashboard & Progress
+
+#### `/dashboard/progress` - Progress Report (Keep as-is)
+Keep this page as a **detailed progress report**:
+- ✅ Total problems solved
+- ✅ Difficulty breakdown charts
+- ✅ Streak tracking
+- ✅ Category-wise completion
+- ✅ Historical progress over time
+
+#### `/dashboard` - Smart Learning Dashboard (NEW)
+Transform the main dashboard into a **personalized learning hub**:
+
+1. **Recommended Problems**
+   - AI-powered suggestions based on weak areas
+   - "You're weak in Dynamic Programming - try these 5 problems"
+   - Problems sorted by priority (what to solve next)
+
+2. **Assigned Courses/Study Plans**
+   - Show enrolled study plans (e.g., "30-Day DSA Challenge")
+   - Track progress through each plan
+   - Daily/weekly targets
+
+3. **What to Study Today**
+   - Personalized daily study suggestions
+   - Based on spaced repetition (problems to revise)
+   - New topics to learn
+
+4. **Learning Path Visualization**
+   - Visual roadmap showing completed → current → upcoming topics
+   - "You've mastered Arrays, now move to Two Pointers"
+
+5. **Quick Actions**
+   - Continue where you left off
+   - Daily challenge
+   - Random problem from weak area
+
+### Database Changes Needed
+```sql
+-- Study plans table
+CREATE TABLE study_plans (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  description TEXT,
+  problems JSONB DEFAULT '[]', -- ordered list of problem slugs
+  duration_days INTEGER,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- User enrolled plans
+CREATE TABLE user_study_plans (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users(id),
+  plan_id UUID REFERENCES study_plans(id),
+  current_day INTEGER DEFAULT 1,
+  started_at TIMESTAMP DEFAULT NOW(),
+  completed_at TIMESTAMP
+);
+
+-- Recommendations cache
+CREATE TABLE user_recommendations (
+  user_id UUID PRIMARY KEY REFERENCES auth.users(id),
+  weak_areas JSONB DEFAULT '[]',
+  recommended_problems JSONB DEFAULT '[]',
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+### UI Mockup for New Dashboard
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Welcome back, Bhanu! 👋                                    │
+│  You're on a 5-day streak 🔥                                │
+├─────────────────────────────────────────────────────────────┤
+│  📚 TODAY'S STUDY PLAN                                      │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Day 12 of "30-Day DSA Challenge"                    │   │
+│  │ Topic: Binary Search                                 │   │
+│  │ Problems: Search in Rotated Array, Find Peak Element │   │
+│  │ [Continue Learning →]                                │   │
+│  └─────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────┤
+│  💡 RECOMMENDED FOR YOU                                     │
+│  Based on your weak areas: Sliding Window, DP              │
+│  • Maximum Subarray (Medium) - 78% solve rate              │
+│  • Longest Substring Without Repeating (Medium)            │
+│  • House Robber (Medium) - Similar to problems you solved  │
+├─────────────────────────────────────────────────────────────┤
+│  📊 QUICK STATS          │  🎯 WEEKLY GOAL                  │
+│  Solved: 45/130          │  Target: 10 problems            │
+│  This Week: 7            │  Done: 7/10 ████████░░ 70%      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Files to Create/Modify
+| File | Changes Needed |
+|------|----------------|
+| `src/app/dashboard/page.tsx` | Complete redesign with recommendations |
+| `src/app/api/recommendations/route.ts` | API to generate recommendations |
+| `src/components/dashboard/StudyPlanCard.tsx` | Study plan progress widget |
+| `src/components/dashboard/RecommendedProblems.tsx` | Recommendation cards |
+| `src/components/dashboard/WeeklyGoal.tsx` | Weekly goal tracker |
+
+---
+
+### ⚠️ Important Note for Handover
+**GitHub Copilot Credits:** Only ~4-5% premium credits remaining on the Student Developer Pack.
+- If credits run out, another team member should continue the implementation
+- The output display bug can be debugged manually by checking `MultiLangCodeEditor.tsx`
+- Use browser DevTools Network tab to verify API responses
 
 ## 🔐 Database Security (SAFE ✅)
 
@@ -110,16 +341,14 @@ ALTER TABLE problems DROP COLUMN IF EXISTS sub_pattern;
 
 | File | Purpose |
 |------|---------|
-| `src/app/page.tsx` | Landing page with Feature Highlights (replaced Trusted By) |
-| `src/app/explore/page.tsx` | **NEW** - Public explore page (no login required) |
-| `src/lib/supabase/middleware.ts` | Updated to allow `/explore` as public route |
-| `src/app/dashboard/profile/page.tsx` | User profile page with stats |
-| `src/components/dashboard/ProfileForm.tsx` | Editable profile form |
-| `src/components/dashboard/PatternAccordion.tsx` | Pattern → Sub-pattern → Problems view |
-| `src/components/dashboard/CompanyFilter.tsx` | Company filter sidebar |
-| `src/components/dashboard/ProblemsClient.tsx` | Main problems page with filters |
-| `src/app/dashboard/layout.tsx` | Updated sidebar with Profile link |
-| `supabase_schema.sql` | Complete database schema |
+| `src/components/Workspace/MultiLangCodeEditor.tsx` | **NEW** - Multi-language editor with Python/Java/C++/JS |
+| `src/app/api/execute/route.ts` | **NEW** - API route to execute code via Piston API |
+| `src/app/dashboard/problems/[slug]/page.tsx` | Updated to use new MultiLangCodeEditor |
+| `src/app/explore/page.tsx` | Added "Solve" button that redirects to login |
+| `src/app/login/page.tsx` | Handles `?redirect=` param for post-login navigation |
+| `src/app/auth/callback/route.ts` | Passes redirect param after OAuth |
+| `src/app/page.tsx` | Landing page with Feature Highlights |
+| `DELETED: src/components/Workspace/CodeEditor.tsx` | Old single-lang editor (removed) |
 
 ## 💻 Git Commands
 ```bash

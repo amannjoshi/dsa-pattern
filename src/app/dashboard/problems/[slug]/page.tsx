@@ -2,8 +2,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Play } from "lucide-react";
-import CodeEditor from "@/components/Workspace/CodeEditor";
+import { ArrowLeft } from "lucide-react";
+import MultiLangCodeEditor from "@/components/Workspace/MultiLangCodeEditor";
 import { LeetCodeIcon } from "@/components/icons/LeetCodeIcon";
 import { SubmitButton } from "@/components/dashboard/SubmitButton";
 
@@ -44,15 +44,6 @@ export default async function ProblemPage({
       ? "text-yellow-400 bg-yellow-400/10 border-yellow-400/20"
       : "text-red-400 bg-red-400/10 border-red-400/20";
 
-  // Default starter code based on the problem slug
-  const defaultCode = `// ${problem.title}
-// Difficulty: ${problem.difficulty}
-
-function solution(args) {
-  // Write your code here
-  
-}`;
-
   return (
     <div className="h-[calc(100vh-4rem)] flex flex-col">
       {/* Header */}
@@ -88,10 +79,6 @@ function solution(args) {
               Solve on LeetCode
             </a>
           )}
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/10 text-green-400 hover:bg-green-500/20 border border-green-500/20 transition-all text-sm font-medium">
-            <Play className="w-4 h-4" />
-            Run Code
-          </button>
           <SubmitButton slug={problem.slug} isSolved={isSolved} />
         </div>
       </header>
@@ -144,7 +131,10 @@ function solution(args) {
 
         {/* Right Panel - Code Editor */}
         <div className="w-1/2 flex flex-col bg-[#1e1e1e]">
-          <CodeEditor defaultCode={defaultCode} language="javascript" />
+          <MultiLangCodeEditor 
+            problemTitle={problem.title} 
+            problemDifficulty={problem.difficulty} 
+          />
         </div>
       </div>
     </div>

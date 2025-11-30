@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Code2, Search, ExternalLink, Lock, ArrowRight, ChevronDown, ChevronRight } from 'lucide-react'
+import { Code2, Search, ExternalLink, Play, Lock, ArrowRight, ChevronDown, ChevronRight } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { Footer } from '@/components/Footer'
 
@@ -257,7 +257,7 @@ export default function ExplorePage() {
                               )}
                             </div>
                           </div>
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-2">
                             <span className={`px-2 py-1 text-xs rounded-full border ${difficultyColors[problem.difficulty]}`}>
                               {problem.difficulty}
                             </span>
@@ -267,10 +267,19 @@ export default function ExplorePage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 rounded-lg hover:bg-secondary/50 transition-colors text-muted-foreground hover:text-foreground"
+                                title="Solve on LeetCode"
                               >
                                 <ExternalLink className="w-4 h-4" />
                               </a>
                             )}
+                            <Link
+                              href={`/login?redirect=/dashboard/problems/${problem.slug}`}
+                              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary text-xs font-medium transition-colors"
+                              title="Solve on W Code"
+                            >
+                              <Play className="w-3 h-3" />
+                              Solve
+                            </Link>
                           </div>
                         </div>
                       ))}
