@@ -13,7 +13,8 @@ import {
   User,
   Menu,
   X,
-  Boxes
+  Boxes,
+  MessageSquareText
 } from 'lucide-react'
 import { SignOutButton } from './SignOutButton'
 
@@ -29,6 +30,7 @@ export function MobileNav({ userEmail }: MobileNavProps) {
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/dashboard/problems', label: 'Problems', icon: BookOpen },
     { href: '/dashboard/oops', label: 'OOPS', icon: Boxes },
+    { href: '/dashboard/interview', label: 'Interview Prep', icon: MessageSquareText },
     { href: '/dashboard/progress', label: 'My Progress', icon: Trophy },
     { href: '/dashboard/profile', label: 'Profile', icon: User },
   ]

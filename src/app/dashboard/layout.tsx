@@ -11,7 +11,8 @@ import {
   LogOut,
   MapPin,
   User,
-  Boxes
+  Boxes,
+  MessageSquareText
 } from 'lucide-react'
 import { SignOutButton } from '@/components/dashboard/SignOutButton'
 import { MobileNav } from '@/components/dashboard/MobileNav'
@@ -57,6 +58,10 @@ export default async function DashboardLayout({
           <Link href="/dashboard/oops" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
             <Boxes className="w-5 h-5" />
             OOPS
+          </Link>
+          <Link href="/dashboard/interview" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
+            <MessageSquareText className="w-5 h-5" />
+            Interview Prep
           </Link>
           <Link href="/dashboard/progress" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
             <Trophy className="w-5 h-5" />
