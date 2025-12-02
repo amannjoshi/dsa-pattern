@@ -1,6 +1,6 @@
 # Project Progress & Handover Guide
 
-**Last Updated:** November 30, 2025 (Evening Session)
+**Last Updated:** December 2, 2025
 **Project Name:** W Code (DSA Preparation Platform)
 **Status:** Phase 6 IN PROGRESS (Multi-Language Code Editor) | Deployed on Vercel
 
@@ -29,6 +29,15 @@ If you are picking up this project, simply tell Copilot:
    - Auth callback redirects to the intended problem page
 
 4. **Deleted Old Code** - Cleaned up unused `CodeEditor.tsx`
+
+### ✅ RECENT UPDATE (Dec 2, 2025)
+1. **PR #1: Dashboard & Mobile UI updates** - MERGED INTO `pr-1` branch and verified locally
+   - Added `src/components/dashboard/MobileNav.tsx` (mobile navigation)
+   - Updated `src/app/dashboard/page.tsx`, `layout.tsx`, `profile/page.tsx`, and `progress/page.tsx` with UI and content changes
+   - Updated `src/components/dashboard/PatternAccordion.tsx` and `ProblemsClient.tsx` for improved problem listing and filtering
+   - Build and local dev server verified: `npm run build` succeeded; `npm run dev` started without blocking errors
+   - No secrets were found committed in the PR (env variables referenced via `process.env` only)
+   - Next: consider merging `pr-1` into `main` and deploying to staging for smoke tests
 
 ### ⚠️ KNOWN ISSUE - OUTPUT NOT SHOWING:
 **FIXED!** The output display bug has been resolved. Changes made:
