@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, Network, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Network, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -389,12 +389,6 @@ export default function TreesPage() {
               Hierarchical data structure - Binary Trees, BST, Traversals and more.
             </p>
           </div>
-          
-          <a href="/notes/dsa-complete-notes.pdf" download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 text-orange-500 rounded-lg font-medium hover:bg-orange-500/20 transition-colors">
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 

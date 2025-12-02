@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, FileCode2, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, FileCode2, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -640,15 +640,6 @@ export default function STLPage() {
               Standard Template Library - your secret weapon for competitive programming!
             </p>
           </div>
-          
-          <a 
-            href="/notes/stl-notes.pdf" 
-            download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 text-cyan-500 rounded-lg font-medium hover:bg-cyan-500/20 transition-colors"
-          >
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 

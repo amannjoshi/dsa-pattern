@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, Layers, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Layers, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -369,15 +369,6 @@ export default function ArraysPage() {
               Foundation of all data structures - learn how arrays work in C++.
             </p>
           </div>
-          
-          <a 
-            href="/notes/arrays-notes.pdf" 
-            download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-500 rounded-lg font-medium hover:bg-blue-500/20 transition-colors"
-          >
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 

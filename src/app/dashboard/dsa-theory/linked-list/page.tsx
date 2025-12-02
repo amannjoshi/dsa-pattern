@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, GitBranch, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, GitBranch, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -622,15 +622,6 @@ export default function LinkedListPage() {
               Dynamic data structure with nodes connected through pointers.
             </p>
           </div>
-          
-          <a 
-            href="/notes/linked-list-notes.pdf" 
-            download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-500 rounded-lg font-medium hover:bg-green-500/20 transition-colors"
-          >
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 

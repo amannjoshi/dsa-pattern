@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, Layers, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Layers, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -376,15 +376,6 @@ export default function StackQueuePage() {
               LIFO and FIFO data structures - fundamental for many algorithms.
             </p>
           </div>
-          
-          <a 
-            href="/notes/stack-queue-notes.pdf" 
-            download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 text-purple-500 rounded-lg font-medium hover:bg-purple-500/20 transition-colors"
-          >
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 

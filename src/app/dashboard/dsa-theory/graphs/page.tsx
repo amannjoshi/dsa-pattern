@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, Share2, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Share2, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -735,12 +735,6 @@ export default function GraphsPage() {
               Non-linear data structure - BFS, DFS, Cycle Detection, Topological Sort.
             </p>
           </div>
-          
-          <a href="/notes/dsa-complete-notes.pdf" download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-pink-500/10 text-pink-500 rounded-lg font-medium hover:bg-pink-500/20 transition-colors">
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, Repeat, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Repeat, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -665,12 +665,6 @@ export default function RecursionPage() {
               Recursion basics, Backtracking, N-Queens, Sudoku Solver & more.
             </p>
           </div>
-          
-          <a href="/notes/dsa-complete-notes.pdf" download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 text-indigo-500 rounded-lg font-medium hover:bg-indigo-500/20 transition-colors">
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 

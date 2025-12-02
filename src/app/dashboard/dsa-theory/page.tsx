@@ -140,7 +140,7 @@ export default function DSATheoryPage() {
         
         {/* Download Notes Button */}
         <a 
-          href="/notes/dsa-complete-notes.pdf" 
+          href="/notes/DSA.pdf" 
           download
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
         >

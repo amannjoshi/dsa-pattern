@@ -6,7 +6,7 @@ This folder contains the complete DSA notes PDF for download.
 
 Place the following PDF in this folder:
 
-- **dsa-complete-notes.pdf** - Complete DSA theory notes covering all topics
+- **DSA.pdf** - Complete DSA theory notes covering all topics
 
 ## Topics Covered in the PDF
 
@@ -27,9 +27,9 @@ Place the following PDF in this folder:
 ## How to Add the PDF
 
 1. Create your PDF with all DSA theory content
-2. Name it `dsa-complete-notes.pdf`
+2. Name it `DSA.pdf`
 3. Place it in this `public/notes/` folder
-4. The download button will automatically link to it at `/notes/dsa-complete-notes.pdf`
+4. The download button will automatically link to it at `/notes/DSA.pdf`
 
 ## Note
 

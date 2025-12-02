@@ -17,7 +17,7 @@ If you are picking up this project, simply tell Copilot:
 - Location: `src/app/dashboard/dsa-theory/page.tsx`
 - 6 Data Structure topics with topic counts
 - 4 Algorithm topics with topic counts
-- Single PDF download button (dsa-complete-notes.pdf)
+- Single PDF download button (DSA.pdf)
 - Quick stats overview (50+ topics, C++ code)
 - Why Learn DSA section
 
@@ -94,7 +94,7 @@ If you are picking up this project, simply tell Copilot:
 
 #### Notes Folder Updated
 - Location: `public/notes/`
-- Single PDF: `dsa-complete-notes.pdf` (placeholder - to be created)
+- Single PDF: `DSA.pdf`
 - Updated README with all topics list
 
 #### Navigation Updated

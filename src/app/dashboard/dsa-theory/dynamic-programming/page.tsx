@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, Table2, Clock, Code2, BookOpen, Download, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Table2, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
 
 const topics = [
   {
@@ -850,12 +850,6 @@ export default function DPPage() {
               Memoization, Tabulation, Knapsack, LCS, LIS, Grid DP, Coin Change & more.
             </p>
           </div>
-          
-          <a href="/notes/dsa-complete-notes.pdf" download
-            className="inline-flex items-center gap-2 px-4 py-2 bg-rose-500/10 text-rose-500 rounded-lg font-medium hover:bg-rose-500/20 transition-colors">
-            <Download className="w-4 h-4" />
-            Download Notes
-          </a>
         </div>
       </div>
 
