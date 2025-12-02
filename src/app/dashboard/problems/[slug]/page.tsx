@@ -6,7 +6,8 @@ import { ArrowLeft } from "lucide-react";
 import MultiLangCodeEditor from "@/components/Workspace/MultiLangCodeEditor";
 import { LeetCodeIcon } from "@/components/icons/LeetCodeIcon";
 import { SubmitButton } from "@/components/dashboard/SubmitButton";
-import { ProblemVisualizer, hasVisualization } from "@/components/visualizers";
+import { ProblemVisualizer } from "@/components/visualizers";
+import { problemTestCases } from "@/data/testCases";
 
 export default async function ProblemPage({
   params,
@@ -111,32 +112,36 @@ export default async function ProblemPage({
               </span>
             </div>
 
-            {/* Examples Placeholder - In a real app, this would come from the DB */}
+            {/* Examples from Test Cases Data */}
             <div className="space-y-4">
               <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider">
-                Example 1
+                Examples
               </h3>
-              <div className="bg-black/40 rounded-lg p-4 border border-white/5 font-mono text-sm">
-                <div className="mb-2">
-                  <span className="text-gray-500">Input:</span>{" "}
-                  <span className="text-white">nums = [2,7,11,15], target = 9</span>
+              {problemTestCases[slug]?.testCases.slice(0, 3).map((testCase, idx) => {
+                const inputData = JSON.parse(testCase.input);
+                const outputData = testCase.expectedOutput;
+                return (
+                  <div key={idx} className="bg-black/40 rounded-lg p-4 border border-white/5 font-mono text-sm">
+                    <p className="text-xs text-gray-500 mb-2">Example {idx + 1}{testCase.description ? `: ${testCase.description}` : ''}</p>
+                    <div className="mb-2">
+                      <span className="text-gray-500">Input:</span>{" "}
+                      <span className="text-white">{Object.entries(inputData).map(([key, val]) => `${key} = ${JSON.stringify(val)}`).join(', ')}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Output:</span>{" "}
+                      <span className="text-white">{outputData}</span>
+                    </div>
+                  </div>
+                );
+              }) || (
+                <div className="bg-black/40 rounded-lg p-4 border border-white/5 font-mono text-sm">
+                  <p className="text-gray-500">No test cases available yet.</p>
                 </div>
-                <div>
-                  <span className="text-gray-500">Output:</span>{" "}
-                  <span className="text-white">[0,1]</span>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Interactive Visualizer for supported problems */}
-            {hasVisualization(slug) && (
-              <div className="mt-8">
-                <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4">
-                  Interactive Visualization
-                </h3>
-                <ProblemVisualizer slug={slug} />
-              </div>
-            )}
+            <ProblemVisualizer slug={slug} />
           </div>
         </div>
 

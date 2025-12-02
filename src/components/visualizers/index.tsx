@@ -45,5 +45,12 @@ export function ProblemVisualizer({ slug }: { slug: string }) {
   
   if (!Visualizer) return null;
   
-  return <Visualizer />;
+  return (
+    <div className="mt-8">
+      <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4">
+        Interactive Visualization
+      </h3>
+      <Visualizer />
+    </div>
+  );
 }
