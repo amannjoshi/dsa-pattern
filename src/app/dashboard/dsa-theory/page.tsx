@@ -8,8 +8,22 @@ import {
   FileCode2,
   Download,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Gauge
 } from 'lucide-react'
+
+// Fundamentals - should learn first
+const fundamentals = [
+  {
+    id: 'complexity',
+    title: 'Time & Space Complexity',
+    description: 'Big O notation, asymptotic analysis, Master Theorem',
+    icon: Gauge,
+    color: 'violet',
+    topics: 6,
+    href: '/dashboard/dsa-theory/complexity'
+  },
+]
 
 const dsaTopics = [
   {
@@ -117,6 +131,7 @@ const colorClasses: Record<string, { bg: string, text: string, border: string }>
   teal: { bg: 'bg-teal-500/10', text: 'text-teal-500', border: 'border-teal-500/30' },
   indigo: { bg: 'bg-indigo-500/10', text: 'text-indigo-500', border: 'border-indigo-500/30' },
   rose: { bg: 'bg-rose-500/10', text: 'text-rose-500', border: 'border-rose-500/30' },
+  violet: { bg: 'bg-violet-500/10', text: 'text-violet-500', border: 'border-violet-500/30' },
 }
 
 export default function DSATheoryPage() {
@@ -166,6 +181,37 @@ export default function DSATheoryPage() {
         <div className="p-4 rounded-xl bg-secondary/30 border border-border/40">
           <p className="text-2xl font-bold text-orange-500">C++</p>
           <p className="text-sm text-muted-foreground">Code Examples</p>
+        </div>
+      </div>
+
+      {/* Fundamentals Section - Start Here! */}
+      <div>
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Gauge className="w-5 h-5 text-violet-500" />
+          Fundamentals
+          <span className="text-xs px-2 py-0.5 bg-violet-500/20 text-violet-400 rounded-full">Start Here!</span>
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {fundamentals.map((topic) => (
+            <Link
+              key={topic.id}
+              href={topic.href}
+              className={`group p-5 rounded-xl border ${colorClasses[topic.color].border} ${colorClasses[topic.color].bg} hover:scale-[1.02] transition-all`}
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div className={`p-2.5 rounded-lg ${colorClasses[topic.color].bg}`}>
+                  <topic.icon className={`w-5 h-5 ${colorClasses[topic.color].text}`} />
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <h3 className="font-semibold text-lg mb-1">{topic.title}</h3>
+              <p className="text-sm text-muted-foreground mb-3">{topic.description}</p>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>{topic.topics} topics</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 

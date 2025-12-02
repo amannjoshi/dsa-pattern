@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowLeft, Share2, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
+import { TopologicalSortVisualizer, BFSVisualizer, DFSVisualizer } from '@/components/dsa-theory/GraphVisualizer'
 
 const topics = [
   {
@@ -189,6 +192,7 @@ int main() {
   {
     id: 3,
     title: 'BFS - Breadth First Search',
+    visualizer: 'bfs' as const,
     content: `**BFS** explores graph level by level, like ripples in water.
 
 **How it works:**
@@ -318,6 +322,7 @@ int main() {
   {
     id: 4,
     title: 'DFS - Depth First Search',
+    visualizer: 'dfs' as const,
     content: `**DFS** explores as deep as possible before backtracking.
 
 **How it works:**
@@ -575,6 +580,7 @@ int main() {
   {
     id: 6,
     title: 'Topological Sort',
+    visualizer: 'topological' as const,
     content: `**Topological Sort** is a linear ordering of vertices such that for every directed edge u → v, vertex u comes before v.
 
 **Only works for DAG** (Directed Acyclic Graph - no cycles).
@@ -770,8 +776,33 @@ export default function GraphsPage() {
                   <span>{topic.complexity}</span>
                 </div>
               </div>
-              <CheckCircle2 className="w-5 h-5 text-muted-foreground/30" />
+              {'visualizer' in topic && topic.visualizer && (
+                <span className="text-xs px-2 py-1 rounded-full bg-pink-500/20 text-pink-400 font-medium">
+                  Interactive
+                </span>
+              )}
             </div>
+
+            {/* Topological Sort Visualizer */}
+            {'visualizer' in topic && topic.visualizer === 'topological' && (
+              <div className="mb-4">
+                <TopologicalSortVisualizer />
+              </div>
+            )}
+
+            {/* BFS Visualizer */}
+            {'visualizer' in topic && topic.visualizer === 'bfs' && (
+              <div className="mb-4">
+                <BFSVisualizer />
+              </div>
+            )}
+
+            {/* DFS Visualizer */}
+            {'visualizer' in topic && topic.visualizer === 'dfs' && (
+              <div className="mb-4">
+                <DFSVisualizer />
+              </div>
+            )}
 
             <div className="mb-4">
               <div className="text-sm text-muted-foreground prose prose-sm prose-invert max-w-none"

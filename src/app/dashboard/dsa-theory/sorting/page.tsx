@@ -1,10 +1,21 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowLeft, ArrowUpDown, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
+import { 
+  BubbleSortVisualizer, 
+  SelectionSortVisualizer, 
+  InsertionSortVisualizer, 
+  MergeSortVisualizer, 
+  QuickSortVisualizer,
+  HeapSortVisualizer
+} from '@/components/dsa-theory/SortingVisualizer'
 
 const topics = [
   {
     id: 1,
     title: 'What is Sorting?',
+    visualizer: null,
     content: `**Sorting** means arranging elements in a specific order (ascending or descending).
 
 **Why Sorting is Important:**
@@ -54,6 +65,7 @@ int main() {
   {
     id: 2,
     title: 'Bubble Sort',
+    visualizer: 'bubble' as const,
     content: `**Bubble Sort** repeatedly swaps adjacent elements if they're in wrong order. Largest element "bubbles up" to the end in each pass.
 
 **How it works:**
@@ -127,6 +139,7 @@ int main() {
   {
     id: 3,
     title: 'Selection Sort',
+    visualizer: 'selection' as const,
     content: `**Selection Sort** finds the minimum element and places it at the beginning. Then finds second minimum, and so on.
 
 **How it works:**
@@ -209,6 +222,7 @@ int main() {
   {
     id: 4,
     title: 'Insertion Sort',
+    visualizer: 'insertion' as const,
     content: `**Insertion Sort** builds sorted array one element at a time by inserting each element at its correct position.
 
 **How it works:**
@@ -296,6 +310,7 @@ int main() {
   {
     id: 5,
     title: 'Merge Sort',
+    visualizer: 'merge' as const,
     content: `**Merge Sort** uses Divide and Conquer approach. Divides array into halves, sorts them recursively, then merges.
 
 **How it works:**
@@ -388,6 +403,7 @@ int main() {
   {
     id: 6,
     title: 'Quick Sort',
+    visualizer: 'quick' as const,
     content: `**Quick Sort** is the most widely used sorting algorithm. Uses Divide and Conquer with a pivot element.
 
 **How it works:**
@@ -476,7 +492,97 @@ int main() {
   },
   {
     id: 7,
+    title: 'Heap Sort',
+    visualizer: 'heap' as const,
+    content: `**Heap Sort** uses a binary heap data structure to sort elements.
+
+**How it works:**
+1. Build a Max Heap from the array
+2. Swap root (maximum) with last element
+3. Reduce heap size by 1
+4. Heapify the root
+5. Repeat until heap size is 1
+
+**What is a Heap?**
+- Complete binary tree
+- Max Heap: Parent >= Children
+- Min Heap: Parent <= Children
+
+**Characteristics:**
+- Always O(n log n) - no worst case degradation
+- NOT stable
+- In-place (O(1) extra space)
+- Not cache-friendly
+
+**When to use:**
+- When guaranteed O(n log n) is needed
+- When memory is limited
+- Priority queue implementation`,
+    code: `#include <iostream>
+#include <vector>
+using namespace std;
+
+// Heapify subtree rooted at index i
+void heapify(vector<int>& arr, int n, int i) {
+    int largest = i;        // Initialize largest as root
+    int left = 2 * i + 1;   // Left child
+    int right = 2 * i + 2;  // Right child
+    
+    // If left child is larger than root
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+    
+    // If right child is larger than largest so far
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+    
+    // If largest is not root
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        
+        // Recursively heapify the affected subtree
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(vector<int>& arr) {
+    int n = arr.size();
+    
+    // Build max heap (rearrange array)
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+    
+    // Extract elements from heap one by one
+    for (int i = n - 1; i > 0; i--) {
+        // Move current root to end
+        swap(arr[0], arr[i]);
+        
+        // Heapify reduced heap
+        heapify(arr, i, 0);
+    }
+}
+
+int main() {
+    vector<int> arr = {12, 11, 13, 5, 6, 7};
+    
+    cout << "Original: ";
+    for (int x : arr) cout << x << " ";
+    cout << endl;
+    
+    heapSort(arr);
+    
+    cout << "Sorted: ";
+    for (int x : arr) cout << x << " ";
+    cout << endl;
+    
+    return 0;
+}`,
+    complexity: 'Best: O(n log n) | Average: O(n log n) | Worst: O(n log n) | Space: O(1)'
+  },
+  {
+    id: 8,
     title: 'Counting Sort',
+    visualizer: null,
     content: `**Counting Sort** is a non-comparison based sorting algorithm. Counts occurrences of each element.
 
 **How it works:**
@@ -568,8 +674,9 @@ int main() {
     complexity: 'Time: O(n + k) | Space: O(n + k) where k = range'
   },
   {
-    id: 8,
+    id: 9,
     title: 'Sorting Summary & Comparison',
+    visualizer: null,
     content: `**Quick Comparison of Sorting Algorithms:**
 
 | Algorithm | Best | Average | Worst | Space | Stable |
@@ -724,8 +831,44 @@ export default function SortingPage() {
                   <span>{topic.complexity}</span>
                 </div>
               </div>
-              <CheckCircle2 className="w-5 h-5 text-muted-foreground/30" />
+              {topic.visualizer && (
+                <span className="text-xs px-2 py-1 rounded-full bg-teal-500/20 text-teal-400 font-medium">
+                  Interactive
+                </span>
+              )}
             </div>
+
+            {/* Visualizer */}
+            {topic.visualizer === 'bubble' && (
+              <div className="mb-4">
+                <BubbleSortVisualizer />
+              </div>
+            )}
+            {topic.visualizer === 'selection' && (
+              <div className="mb-4">
+                <SelectionSortVisualizer />
+              </div>
+            )}
+            {topic.visualizer === 'insertion' && (
+              <div className="mb-4">
+                <InsertionSortVisualizer />
+              </div>
+            )}
+            {topic.visualizer === 'merge' && (
+              <div className="mb-4">
+                <MergeSortVisualizer />
+              </div>
+            )}
+            {topic.visualizer === 'quick' && (
+              <div className="mb-4">
+                <QuickSortVisualizer />
+              </div>
+            )}
+            {topic.visualizer === 'heap' && (
+              <div className="mb-4">
+                <HeapSortVisualizer />
+              </div>
+            )}
 
             <div className="mb-4">
               <div className="text-sm text-muted-foreground prose prose-sm prose-invert max-w-none"
