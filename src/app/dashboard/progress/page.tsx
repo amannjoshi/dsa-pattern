@@ -42,44 +42,44 @@ export default async function ProgressPage() {
   const completionRate = totalProblems > 0 ? Math.round((totalSolved / totalProblems) * 100) : 0;
 
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-4 md:p-8 space-y-6 md:space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">My Progress</h1>
-        <p className="text-muted-foreground mt-1">Track your journey to mastery.</p>
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">My Progress</h1>
+        <p className="text-muted-foreground mt-1 text-sm md:text-base">Track your journey to mastery.</p>
       </div>
 
       {/* Main Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
-          <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="p-4 md:p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
+          <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm font-medium">
             <Trophy className="w-4 h-4 text-yellow-500" />
             <span>Total Solved</span>
           </div>
-          <div className="text-3xl font-bold">{totalSolved} <span className="text-muted-foreground text-lg font-normal">/ {totalProblems}</span></div>
+          <div className="text-2xl md:text-3xl font-bold">{totalSolved} <span className="text-muted-foreground text-base md:text-lg font-normal">/ {totalProblems}</span></div>
         </div>
         
-        <div className="p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
-          <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
+        <div className="p-4 md:p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
+          <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm font-medium">
             <Target className="w-4 h-4 text-blue-500" />
-            <span>Completion Rate</span>
+            <span>Completion</span>
           </div>
-          <div className="text-3xl font-bold">{completionRate}%</div>
+          <div className="text-2xl md:text-3xl font-bold">{completionRate}%</div>
         </div>
 
-        <div className="p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
-          <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
+        <div className="p-4 md:p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
+          <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm font-medium">
             <Zap className="w-4 h-4 text-purple-500" />
-            <span>Current Streak</span>
+            <span>Streak</span>
           </div>
-          <div className="text-3xl font-bold">1 <span className="text-muted-foreground text-lg font-normal">Day</span></div>
+          <div className="text-2xl md:text-3xl font-bold">1 <span className="text-muted-foreground text-base md:text-lg font-normal">Day</span></div>
         </div>
 
-        <div className="p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
-          <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
+        <div className="p-4 md:p-6 rounded-xl bg-secondary/5 border border-border/40 space-y-2">
+          <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm font-medium">
             <Calendar className="w-4 h-4 text-green-500" />
             <span>Last Solved</span>
           </div>
-          <div className="text-lg font-medium truncate">
+          <div className="text-sm md:text-lg font-medium truncate">
             {progress && progress.length > 0 
               ? new Date(progress[progress.length - 1].solved_at).toLocaleDateString() 
               : "No problems yet"}
@@ -88,9 +88,9 @@ export default async function ProgressPage() {
       </div>
 
       {/* Difficulty Breakdown */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
         {/* Easy Card */}
-        <div className="p-6 rounded-xl bg-green-500/5 border border-green-500/10 space-y-4">
+        <div className="p-4 md:p-6 rounded-xl bg-green-500/5 border border-green-500/10 space-y-3 md:space-y-4">
           <div className="flex justify-between items-center">
             <h3 className="font-semibold text-green-400">Easy</h3>
             <span className="text-xs font-medium bg-green-500/10 text-green-400 px-2 py-1 rounded-full">
@@ -106,7 +106,7 @@ export default async function ProgressPage() {
         </div>
 
         {/* Medium Card */}
-        <div className="p-6 rounded-xl bg-yellow-500/5 border border-yellow-500/10 space-y-4">
+        <div className="p-4 md:p-6 rounded-xl bg-yellow-500/5 border border-yellow-500/10 space-y-3 md:space-y-4">
           <div className="flex justify-between items-center">
             <h3 className="font-semibold text-yellow-400">Medium</h3>
             <span className="text-xs font-medium bg-yellow-500/10 text-yellow-400 px-2 py-1 rounded-full">
@@ -122,7 +122,7 @@ export default async function ProgressPage() {
         </div>
 
         {/* Hard Card */}
-        <div className="p-6 rounded-xl bg-red-500/5 border border-red-500/10 space-y-4">
+        <div className="p-4 md:p-6 rounded-xl bg-red-500/5 border border-red-500/10 space-y-3 md:space-y-4">
           <div className="flex justify-between items-center">
             <h3 className="font-semibold text-red-400">Hard</h3>
             <span className="text-xs font-medium bg-red-500/10 text-red-400 px-2 py-1 rounded-full">

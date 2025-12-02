@@ -91,19 +91,19 @@ export default async function ProfilePage() {
   })
 
   return (
-    <div className="p-8 max-w-5xl mx-auto space-y-8">
+    <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-6 md:space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Profile</h1>
-        <p className="text-muted-foreground mt-1">Manage your account and track your progress.</p>
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Profile</h1>
+        <p className="text-muted-foreground mt-1 text-sm md:text-base">Manage your account and track your progress.</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
         {/* Left Column - Profile Card */}
-        <div className="lg:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-4 md:space-y-6">
           {/* Avatar & Basic Info */}
-          <div className="bg-secondary/5 border border-border/40 rounded-xl p-6 text-center">
-            <div className="w-24 h-24 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary border-2 border-primary/20 mb-4">
+          <div className="bg-secondary/5 border border-border/40 rounded-xl p-4 md:p-6 text-center">
+            <div className="w-20 h-20 md:w-24 md:h-24 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary border-2 border-primary/20 mb-4">
               {profile?.avatar_url ? (
                 <img 
                   src={profile.avatar_url} 
@@ -111,11 +111,11 @@ export default async function ProfilePage() {
                   className="w-full h-full rounded-full object-cover"
                 />
               ) : (
-                <User className="w-12 h-12" />
+                <User className="w-10 h-10 md:w-12 md:h-12" />
               )}
             </div>
             
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-lg md:text-xl font-semibold">
               {profile?.full_name || profile?.username || 'Anonymous User'}
             </h2>
             <p className="text-sm text-muted-foreground">@{profile?.username || 'user'}</p>
@@ -125,9 +125,9 @@ export default async function ProfilePage() {
               <span>{profile?.location || 'Not set'}</span>
             </div>
 
-            <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground mt-1">
-              <Mail className="w-4 h-4" />
-              <span className="truncate">{user.email}</span>
+            <div className="flex items-center justify-center gap-1 text-xs md:text-sm text-muted-foreground mt-1">
+              <Mail className="w-4 h-4 shrink-0" />
+              <span className="truncate max-w-[200px]">{user.email}</span>
             </div>
 
             <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground mt-1">
@@ -144,21 +144,21 @@ export default async function ProfilePage() {
 
             {profile?.bio && (
               <p className="text-sm text-muted-foreground mt-4 italic">
-                "{profile.bio}"
+                &quot;{profile.bio}&quot;
               </p>
             )}
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-secondary/5 border border-border/40 rounded-xl p-6">
-            <h3 className="font-semibold mb-4 flex items-center gap-2">
+          <div className="bg-secondary/5 border border-border/40 rounded-xl p-4 md:p-6">
+            <h3 className="font-semibold mb-4 flex items-center gap-2 text-sm md:text-base">
               <TrendingUp className="w-4 h-4 text-primary" />
               Quick Stats
             </h3>
             
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
                   <Flame className="w-4 h-4 text-orange-500" />
                   Current Streak
                 </div>
@@ -166,7 +166,7 @@ export default async function ProfilePage() {
               </div>
               
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
                   <CheckCircle2 className="w-4 h-4 text-green-500" />
                   Problems Solved
                 </div>
@@ -174,7 +174,7 @@ export default async function ProfilePage() {
               </div>
               
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
                   <Clock className="w-4 h-4 text-yellow-500" />
                   Problems Attempted
                 </div>
@@ -184,8 +184,8 @@ export default async function ProfilePage() {
           </div>
 
           {/* Difficulty Breakdown */}
-          <div className="bg-secondary/5 border border-border/40 rounded-xl p-6">
-            <h3 className="font-semibold mb-4 flex items-center gap-2">
+          <div className="bg-secondary/5 border border-border/40 rounded-xl p-4 md:p-6">
+            <h3 className="font-semibold mb-4 flex items-center gap-2 text-sm md:text-base">
               <Trophy className="w-4 h-4 text-primary" />
               Difficulty Breakdown
             </h3>
@@ -235,8 +235,8 @@ export default async function ProfilePage() {
 
         {/* Right Column - Edit Profile Form */}
         <div className="lg:col-span-2">
-          <div className="bg-secondary/5 border border-border/40 rounded-xl p-6">
-            <h3 className="font-semibold mb-6">Edit Profile</h3>
+          <div className="bg-secondary/5 border border-border/40 rounded-xl p-4 md:p-6">
+            <h3 className="font-semibold mb-4 md:mb-6 text-sm md:text-base">Edit Profile</h3>
             <ProfileForm profile={profile} userId={user.id} />
           </div>
         </div>
