@@ -14,7 +14,8 @@ import {
   Menu,
   X,
   Boxes,
-  MessageSquareText
+  MessageSquareText,
+  Binary
 } from 'lucide-react'
 import { SignOutButton } from './SignOutButton'
 
@@ -31,6 +32,7 @@ export function MobileNav({ userEmail }: MobileNavProps) {
     { href: '/dashboard/problems', label: 'Problems', icon: BookOpen },
     { href: '/dashboard/oops', label: 'OOPS', icon: Boxes },
     { href: '/dashboard/interview', label: 'Interview Prep', icon: MessageSquareText },
+    { href: '/dashboard/dsa-theory', label: 'DSA Theory', icon: Binary },
     { href: '/dashboard/progress', label: 'My Progress', icon: Trophy },
     { href: '/dashboard/profile', label: 'Profile', icon: User },
   ]
