@@ -157,20 +157,20 @@ export function PatternAccordion({
             {/* Category Header */}
             <button
               onClick={() => toggleCategory(group.category)}
-              className="w-full flex items-center gap-4 p-4 hover:bg-secondary/10 transition-colors"
+              className="w-full flex items-center gap-3 md:gap-4 p-3 md:p-4 hover:bg-secondary/10 transition-colors"
             >
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-bold">
+              <div className="flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-lg bg-primary/10 text-primary text-xs md:text-sm font-bold shrink-0">
                 {idx + 1}
               </div>
               
-              <div className="flex-1 text-left">
-                <h3 className="font-semibold text-foreground">{group.category}</h3>
+              <div className="flex-1 text-left min-w-0">
+                <h3 className="font-semibold text-foreground text-sm md:text-base truncate">{group.category}</h3>
                 <p className="text-xs text-muted-foreground">
                   {group.subPatterns.length} sub-patterns • {group.totalProblems} problems
                 </p>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 md:gap-4 shrink-0">
                 <div className="text-right hidden sm:block">
                   <div className="flex items-center gap-2 text-sm">
                     <span className="text-muted-foreground">{group.totalSolved}</span>
@@ -185,7 +185,7 @@ export function PatternAccordion({
                   </div>
                 </div>
                 
-                <div className="text-sm text-muted-foreground">
+                <div className="text-xs md:text-sm text-muted-foreground hidden md:block">
                   {group.totalAttempted} attempted
                 </div>
 
@@ -242,9 +242,10 @@ export function PatternAccordion({
                             const isAttempted = attemptedProblems.has(problem.slug)
 
                             return (
-                              <div
+                              <Link
                                 key={problem.id}
-                                className="flex items-center gap-4 px-4 py-3 pl-16 hover:bg-secondary/10 transition-colors group"
+                                href={`/dashboard/problems/${problem.slug}`}
+                                className="flex items-center gap-3 md:gap-4 px-3 md:px-4 py-3 pl-10 md:pl-16 hover:bg-secondary/10 transition-colors group"
                               >
                                 {isSolved ? (
                                   <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
@@ -260,18 +261,12 @@ export function PatternAccordion({
                                   </p>
                                 </div>
 
-                                <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${getDifficultyColor(problem.difficulty)}`}>
+                                <span className={`px-2 py-0.5 rounded-full text-xs font-medium border shrink-0 ${getDifficultyColor(problem.difficulty)}`}>
                                   {problem.difficulty}
                                 </span>
 
-                                <Link
-                                  href={`/dashboard/problems/${problem.slug}`}
-                                  className="opacity-0 group-hover:opacity-100 px-3 py-1.5 bg-foreground text-background text-xs font-medium rounded-lg hover:opacity-90 transition-all flex items-center gap-1"
-                                >
-                                  Solve
-                                  <ArrowRight className="w-3 h-3" />
-                                </Link>
-                              </div>
+                                <ArrowRight className="w-4 h-4 text-muted-foreground md:opacity-0 md:group-hover:opacity-100 transition-opacity shrink-0" />
+                              </Link>
                             )
                           })}
                         </div>

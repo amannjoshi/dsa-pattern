@@ -13,6 +13,7 @@ import {
   User
 } from 'lucide-react'
 import { SignOutButton } from '@/components/dashboard/SignOutButton'
+import { MobileNav } from '@/components/dashboard/MobileNav'
 
 export default async function DashboardLayout({
   children,
@@ -31,7 +32,10 @@ export default async function DashboardLayout({
 
   return (
     <div className="min-h-screen flex bg-background">
-      {/* Sidebar */}
+      {/* Mobile Navigation */}
+      <MobileNav userEmail={user.email || 'User'} />
+
+      {/* Desktop Sidebar */}
       <aside className="w-64 border-r border-border/40 bg-background/50 backdrop-blur-xl fixed h-full hidden md:flex flex-col z-20">
         <div className="p-6 border-b border-border/40">
           <Link href="/dashboard" className="flex items-center gap-2 font-semibold text-xl tracking-tight">
@@ -90,7 +94,7 @@ export default async function DashboardLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 md:ml-64 min-h-screen">
+      <main className="flex-1 md:ml-64 min-h-screen pt-16 md:pt-0">
         {children}
       </main>
     </div>

@@ -25,7 +25,7 @@ interface ProblemsClientProps {
 export function ProblemsClient({ problems, solvedProblems, attemptedProblems }: ProblemsClientProps) {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([])
   const [searchQuery, setSearchQuery] = useState('')
-  const [showFilters, setShowFilters] = useState(true)
+  const [showFilters, setShowFilters] = useState(false) // Default to hidden on mobile
   const [difficultyFilter, setDifficultyFilter] = useState<string>('All')
   const [statusFilter, setStatusFilter] = useState<string>('All')
 
@@ -85,17 +85,17 @@ export function ProblemsClient({ problems, solvedProblems, attemptedProblems }: 
   }
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-4 md:p-8 space-y-4 md:space-y-6">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">DSA Pattern Mastery</h1>
-          <p className="text-muted-foreground mt-1">Systematic approach to Data Structures & Algorithms</p>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">DSA Pattern Mastery</h1>
+          <p className="text-muted-foreground mt-1 text-sm md:text-base">Systematic approach to Data Structures & Algorithms</p>
         </div>
       </div>
 
       {/* Search and Filters Bar */}
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col gap-3 md:gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input 
@@ -107,11 +107,11 @@ export function ProblemsClient({ problems, solvedProblems, attemptedProblems }: 
           />
         </div>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <select 
             value={difficultyFilter}
             onChange={(e) => setDifficultyFilter(e.target.value)}
-            className="bg-secondary/50 border border-border/40 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="bg-secondary/50 border border-border/40 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 flex-1 md:flex-none"
           >
             <option value="All">All Difficulties</option>
             <option value="Easy">Easy</option>
@@ -122,7 +122,7 @@ export function ProblemsClient({ problems, solvedProblems, attemptedProblems }: 
           <select 
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-secondary/50 border border-border/40 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="bg-secondary/50 border border-border/40 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 flex-1 md:flex-none"
           >
             <option value="All">All Status</option>
             <option value="Solved">Solved</option>
@@ -132,7 +132,7 @@ export function ProblemsClient({ problems, solvedProblems, attemptedProblems }: 
           
           <button 
             onClick={() => setShowFilters(!showFilters)}
-            className={`p-2.5 border rounded-lg transition-colors ${
+            className={`p-2.5 border rounded-lg transition-colors hidden lg:flex ${
               showFilters 
                 ? 'bg-primary/10 border-primary/20 text-primary' 
                 : 'bg-secondary/50 border-border/40 text-muted-foreground hover:bg-secondary/80'
