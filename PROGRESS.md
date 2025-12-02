@@ -1,15 +1,63 @@
 # Project Progress & Handover Guide
 
-**Last Updated:** December 2, 2025 (Night)
+**Last Updated:** December 2, 2025 (Late Night)
 **Project Name:** W Code (DSA Preparation Platform)
-**Status:** Phase 11 - Interactive Visualizations | Test Cases Progress
+**Status:** Phase 12 - Advanced Visualizers & Complexity Analysis
 
 ## 🚀 Quick Start for New Developers
 
 If you are picking up this project, simply tell Copilot:
 > "Analyze PROGRESS.md and continue from where we left off."
 
-## 📋 What Was Done (Latest Session - Dec 2, 2025 Night)
+## 📋 What Was Done (Latest Session - Dec 2, 2025 Late Night)
+
+### ✅ PR #5: Advanced Visualizers & Complexity Analysis
+
+#### New DSA Theory Page: Time & Space Complexity - DONE!
+- Location: `src/app/dashboard/dsa-theory/complexity/page.tsx`
+- Topics covered:
+  - What is Time Complexity?
+  - Asymptotic Notations (Big O, Omega, Theta)
+  - Common Complexities (O(1) to O(n!))
+  - Master Theorem
+  - Space Complexity
+- Interactive visualizers for each concept
+
+#### Complexity Visualizers - DONE!
+- Location: `src/components/dsa-theory/ComplexityVisualizer.tsx`
+- **Complexity Graph Visualizer**: Interactive growth rate comparison
+- **Asymptotic Notations Visualizer**: Big O, Omega, Theta demonstrations
+- **Complexity Examples Visualizer**: Code examples with complexity
+- **Master Theorem Visualizer**: Interactive theorem solver
+- **Space Complexity Visualizer**: Memory usage animations
+
+#### Sorting Visualizers (Enhanced) - DONE!
+- Location: `src/components/dsa-theory/SortingVisualizer.tsx`
+- **Bubble Sort**: Step-by-step with comparisons and swaps
+- **Selection Sort**: Finding minimum visualization
+- **Insertion Sort**: Card insertion animation
+- **Merge Sort**: Divide and conquer animation
+- **Quick Sort**: Pivot selection and partitioning
+- **Heap Sort**: Binary heap visualization
+- Speed controls and step-through mode
+
+#### Graph Visualizers - DONE!
+- Location: `src/components/dsa-theory/GraphVisualizer.tsx`
+- **BFS Visualizer**: Level-order traversal animation
+- **DFS Visualizer**: Depth-first exploration
+- **Topological Sort**: Dressing order example (fun!)
+- **Dijkstra's Algorithm**: Shortest path animation
+- Interactive node selection
+
+#### Topological Sort Visualizer - DONE!
+- Location: `src/components/dsa-theory/TopologicalSortVisualizer.tsx`
+- Dependency graph visualization
+- Kahn's algorithm (BFS approach)
+- DFS approach with stack
+
+---
+
+## 📋 What Was Done (Dec 2, 2025 Night)
 
 ### ✅ Interactive Visualizers for DSA Theory
 
