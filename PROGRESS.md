@@ -1,15 +1,45 @@
 # Project Progress & Handover Guide
 
-**Last Updated:** December 2, 2025 (Evening)
+**Last Updated:** December 2, 2025 (Night)
 **Project Name:** W Code (DSA Preparation Platform)
-**Status:** Phase 10 - DSA Theory Section COMPLETE | Ready for PR #3
+**Status:** Phase 11 - Interactive Visualizations | Test Cases Progress
 
 ## 🚀 Quick Start for New Developers
 
 If you are picking up this project, simply tell Copilot:
 > "Analyze PROGRESS.md and continue from where we left off."
 
-## 📋 What Was Done (Latest Session - Dec 2, 2025 Evening)
+## 📋 What Was Done (Latest Session - Dec 2, 2025 Night)
+
+### ✅ Interactive Visualizers for DSA Theory
+
+#### Stack & Queue Visualizers - DONE!
+- Location: `src/components/dsa-theory/StackQueueVisualizer.tsx`
+- **Stack Visualizer**: Push/Pop animation with LIFO demonstration
+- **Queue Visualizer**: Enqueue/Dequeue animation with FIFO demonstration  
+- **Circular Queue Visualizer**: SVG circular layout with front/rear pointers
+- Integrated into `src/app/dashboard/dsa-theory/stack-queue/page.tsx`
+- Shows "Interactive" badge on topics with visualizers
+
+#### Problem Visualizers (for Coding Problems)
+- **Container With Most Water**: Two-pointer animation
+- **Trapping Rain Water**: Water accumulation visualization
+- **N-Queens**: Backtracking with queen placement animation
+- Location: `src/components/visualizers/`
+
+### ✅ Test Cases for LeetCode-Style Judging
+- Location: `src/data/testCases.ts`
+- 52 unique problems with test cases
+- Each problem has: functionName, testCases[], templates (Python, Java, C++, JS)
+- Fixed duplicate entries (word-break, search-in-rotated-sorted-array)
+
+### ✅ Navigation Updates
+- Moved "My Progress" and "Profile" to Account section
+- Updated both desktop sidebar and mobile navigation
+
+---
+
+## 📋 What Was Done (Dec 2, 2025 Evening)
 
 ### ✅ PR #3: DSA Theory Section - COMPLETE!
 
@@ -27,7 +57,7 @@ If you are picking up this project, simply tell Copilot:
 |-------|----------|--------------|
 | Arrays | `dsa-theory/arrays/page.tsx` | 5 topics |
 | Linked List | `dsa-theory/linked-list/page.tsx` | 6 topics |
-| Stack & Queue | `dsa-theory/stack-queue/page.tsx` | 4 topics |
+| Stack & Queue | `dsa-theory/stack-queue/page.tsx` | 4 topics + 3 Interactive Visualizers |
 | Trees | `dsa-theory/trees/page.tsx` | 4 topics |
 | Graphs | `dsa-theory/graphs/page.tsx` | 6 topics |
 | C++ STL | `dsa-theory/stl/page.tsx` | 7 topics |

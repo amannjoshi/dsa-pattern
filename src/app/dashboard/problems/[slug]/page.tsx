@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import MultiLangCodeEditor from "@/components/Workspace/MultiLangCodeEditor";
 import { LeetCodeIcon } from "@/components/icons/LeetCodeIcon";
 import { SubmitButton } from "@/components/dashboard/SubmitButton";
+import { ProblemVisualizer, hasVisualization } from "@/components/visualizers";
 
 export default async function ProblemPage({
   params,
@@ -126,6 +127,16 @@ export default async function ProblemPage({
                 </div>
               </div>
             </div>
+
+            {/* Interactive Visualizer for supported problems */}
+            {hasVisualization(slug) && (
+              <div className="mt-8">
+                <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4">
+                  Interactive Visualization
+                </h3>
+                <ProblemVisualizer slug={slug} />
+              </div>
+            )}
           </div>
         </div>
 

@@ -33,11 +33,11 @@ export function MobileNav({ userEmail }: MobileNavProps) {
     { href: '/dashboard/oops', label: 'OOPS', icon: Boxes },
     { href: '/dashboard/interview', label: 'Interview Prep', icon: MessageSquareText },
     { href: '/dashboard/dsa-theory', label: 'DSA Theory', icon: Binary },
-    { href: '/dashboard/progress', label: 'My Progress', icon: Trophy },
-    { href: '/dashboard/profile', label: 'Profile', icon: User },
   ]
 
   const accountItems = [
+    { href: '/dashboard/progress', label: 'My Progress', icon: Trophy },
+    { href: '/dashboard/profile', label: 'Profile', icon: User },
     { href: '/dashboard/pricing', label: 'Pricing', icon: CreditCard },
     { href: '/dashboard/settings', label: 'Settings', icon: Settings },
   ]

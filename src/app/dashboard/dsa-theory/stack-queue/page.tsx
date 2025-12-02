@@ -1,10 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowLeft, Layers, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
+import { StackVisualizer, QueueVisualizer, CircularQueueVisualizer } from '@/components/dsa-theory/StackQueueVisualizer'
 
 const topics = [
   {
     id: 1,
     title: 'What is a Stack?',
+    visualizer: 'stack' as const,
     content: `A **Stack** is a linear data structure that follows **LIFO (Last In First Out)** principle. The last element added is the first one to be removed.
 
 **Real-life examples:**
@@ -164,6 +168,7 @@ int main() {
   {
     id: 3,
     title: 'What is a Queue?',
+    visualizer: 'queue' as const,
     content: `A **Queue** is a linear data structure that follows **FIFO (First In First Out)** principle. The first element added is the first one to be removed.
 
 **Real-life examples:**
@@ -227,6 +232,7 @@ int main() {
   {
     id: 4,
     title: 'Circular Queue',
+    visualizer: 'circular-queue' as const,
     content: `A **Circular Queue** is a linear data structure where the last position is connected back to the first position, forming a circle.
 
 **Why Circular Queue?**
@@ -416,8 +422,29 @@ export default function StackQueuePage() {
                   <span>{topic.complexity}</span>
                 </div>
               </div>
-              <CheckCircle2 className="w-5 h-5 text-muted-foreground/30" />
+              {'visualizer' in topic && (
+                <span className="text-xs px-2 py-1 rounded-full bg-purple-500/20 text-purple-400 font-medium">
+                  Interactive
+                </span>
+              )}
             </div>
+
+            {/* Visualizer */}
+            {'visualizer' in topic && topic.visualizer === 'stack' && (
+              <div className="mb-4">
+                <StackVisualizer />
+              </div>
+            )}
+            {'visualizer' in topic && topic.visualizer === 'queue' && (
+              <div className="mb-4">
+                <QueueVisualizer />
+              </div>
+            )}
+            {'visualizer' in topic && topic.visualizer === 'circular-queue' && (
+              <div className="mb-4">
+                <CircularQueueVisualizer />
+              </div>
+            )}
 
             <div className="mb-4">
               <div 
