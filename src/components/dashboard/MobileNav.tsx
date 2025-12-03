@@ -17,7 +17,8 @@ import {
   MessageSquareText,
   Binary,
   Network,
-  Database
+  Database,
+  Cpu
 } from 'lucide-react'
 import { SignOutButton } from './SignOutButton'
 
@@ -37,6 +38,7 @@ export function MobileNav({ userEmail }: MobileNavProps) {
     { href: '/dashboard/dsa-theory', label: 'DSA Theory', icon: Binary },
     { href: '/dashboard/cn-theory', label: 'CN', icon: Network },
     { href: '/dashboard/dbms', label: 'DBMS', icon: Database },
+    { href: '/dashboard/os', label: 'OS', icon: Cpu },
   ]
 
   const accountItems = [

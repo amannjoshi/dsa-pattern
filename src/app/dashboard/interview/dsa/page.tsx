@@ -299,6 +299,133 @@ def mergeKLists(lists):
     
     return dummy.next
 \`\`\``
+  },
+  {
+    id: 11,
+    topic: 'Arrays',
+    question: 'Best Time to Buy and Sell Stock',
+    description: 'Find the maximum profit you can achieve from buying on one day and selling on a later day.',
+    difficulty: 'Easy',
+    companies: ['Amazon', 'Microsoft', 'Goldman Sachs', 'Meta'],
+    frequency: 94,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    solution: `Track minimum price seen so far and maximum profit.
+
+\`\`\`python
+def maxProfit(prices):
+    min_price = float('inf')
+    max_profit = 0
+    
+    for price in prices:
+        min_price = min(min_price, price)
+        max_profit = max(max_profit, price - min_price)
+    
+    return max_profit
+\`\`\``
+  },
+  {
+    id: 12,
+    topic: 'Trees',
+    question: 'Lowest Common Ancestor of BST',
+    description: 'Given a BST and two nodes, find their lowest common ancestor.',
+    difficulty: 'Medium',
+    companies: ['Amazon', 'Microsoft', 'LinkedIn', 'Meta'],
+    frequency: 82,
+    timeComplexity: 'O(h)',
+    spaceComplexity: 'O(1)',
+    solution: `Use BST property: if both nodes are smaller, go left; if larger, go right.
+
+\`\`\`python
+def lowestCommonAncestor(root, p, q):
+    while root:
+        if p.val < root.val and q.val < root.val:
+            root = root.left
+        elif p.val > root.val and q.val > root.val:
+            root = root.right
+        else:
+            return root
+    return None
+\`\`\``
+  },
+  {
+    id: 13,
+    topic: 'Dynamic Programming',
+    question: 'House Robber',
+    description: 'Given an array of non-negative integers representing money in houses, find max amount you can rob without robbing adjacent houses.',
+    difficulty: 'Medium',
+    companies: ['Amazon', 'Google', 'Cisco', 'LinkedIn'],
+    frequency: 80,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    solution: `At each house: max(rob this + prev2, skip and take prev1)
+
+\`\`\`python
+def rob(nums):
+    prev1 = prev2 = 0
+    for num in nums:
+        prev1, prev2 = max(num + prev2, prev1), prev1
+    return prev1
+\`\`\``
+  },
+  {
+    id: 14,
+    topic: 'Graphs',
+    question: 'Course Schedule (Cycle Detection)',
+    description: 'Check if you can finish all courses given prerequisites. Detect cycle in directed graph.',
+    difficulty: 'Medium',
+    companies: ['Amazon', 'Microsoft', 'Google', 'Meta'],
+    frequency: 84,
+    timeComplexity: 'O(V + E)',
+    spaceComplexity: 'O(V + E)',
+    solution: `Use DFS with three states: unvisited, visiting, visited.
+
+\`\`\`python
+def canFinish(numCourses, prerequisites):
+    graph = defaultdict(list)
+    for course, prereq in prerequisites:
+        graph[prereq].append(course)
+    
+    # 0=unvisited, 1=visiting, 2=visited
+    state = [0] * numCourses
+    
+    def hasCycle(course):
+        if state[course] == 1: return True  # cycle
+        if state[course] == 2: return False
+        
+        state[course] = 1
+        for next_course in graph[course]:
+            if hasCycle(next_course): return True
+        state[course] = 2
+        return False
+    
+    for i in range(numCourses):
+        if hasCycle(i): return False
+    return True
+\`\`\``
+  },
+  {
+    id: 15,
+    topic: 'Linked List',
+    question: 'Detect Cycle in Linked List',
+    description: 'Given head of linked list, determine if it has a cycle.',
+    difficulty: 'Easy',
+    companies: ['Amazon', 'Microsoft', 'Apple', 'Bloomberg'],
+    frequency: 88,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(1)',
+    solution: `Use Floyd's Cycle Detection (slow and fast pointers).
+
+\`\`\`python
+def hasCycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+\`\`\``
   }
 ]
 

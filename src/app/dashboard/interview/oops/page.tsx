@@ -353,6 +353,204 @@ class Car extends Vehicle {
     companies: ['TCS', 'Infosys', 'Wipro', 'Amazon'],
     language: 'java',
     frequency: 85
+  },
+  {
+    id: 11,
+    question: 'What is the difference between Shallow Copy and Deep Copy?',
+    answer: `**Shallow Copy:**
+- Creates a new object but copies references
+- Changes to nested objects affect both copies
+- Faster, uses less memory
+
+\`\`\`python
+import copy
+original = [[1, 2], [3, 4]]
+shallow = copy.copy(original)
+shallow[0][0] = 99
+print(original)  # [[99, 2], [3, 4]] - Changed!
+\`\`\`
+
+**Deep Copy:**
+- Creates a new object and recursively copies all nested objects
+- Completely independent copy
+- Slower, uses more memory
+
+\`\`\`python
+import copy
+original = [[1, 2], [3, 4]]
+deep = copy.deepcopy(original)
+deep[0][0] = 99
+print(original)  # [[1, 2], [3, 4]] - Unchanged!
+\`\`\`
+
+**Key Point:** Deep copy for complete independence, shallow copy for performance.`,
+    difficulty: 'Medium',
+    companies: ['Amazon', 'Google', 'Microsoft'],
+    language: 'all',
+    frequency: 78
+  },
+  {
+    id: 12,
+    question: 'What is the Singleton Design Pattern?',
+    answer: `**Singleton:** Ensures a class has only one instance and provides global access to it.
+
+**Use Cases:**
+- Database connection pool
+- Logger
+- Configuration manager
+- Thread pool
+
+\`\`\`java
+public class Singleton {
+    private static Singleton instance;
+    
+    private Singleton() {} // Private constructor
+    
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+\`\`\`
+
+**Thread-Safe Version:**
+\`\`\`java
+public class Singleton {
+    private static volatile Singleton instance;
+    
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+\`\`\``,
+    difficulty: 'Medium',
+    companies: ['Amazon', 'Microsoft', 'Google', 'Uber'],
+    language: 'java',
+    frequency: 82
+  },
+  {
+    id: 13,
+    question: 'What is the Factory Design Pattern?',
+    answer: `**Factory Pattern:** Creates objects without specifying exact class. Delegates creation to subclasses.
+
+**Benefits:**
+- Loose coupling
+- Easy to extend
+- Encapsulates creation logic
+
+\`\`\`java
+// Product interface
+interface Shape {
+    void draw();
+}
+
+// Concrete products
+class Circle implements Shape {
+    public void draw() { System.out.println("Drawing Circle"); }
+}
+class Square implements Shape {
+    public void draw() { System.out.println("Drawing Square"); }
+}
+
+// Factory
+class ShapeFactory {
+    public Shape createShape(String type) {
+        if (type.equals("circle")) return new Circle();
+        if (type.equals("square")) return new Square();
+        return null;
+    }
+}
+
+// Usage
+ShapeFactory factory = new ShapeFactory();
+Shape shape = factory.createShape("circle");
+shape.draw();
+\`\`\``,
+    difficulty: 'Medium',
+    companies: ['Amazon', 'Google', 'Meta', 'Microsoft'],
+    language: 'java',
+    frequency: 80
+  },
+  {
+    id: 14,
+    question: 'What is the difference between Static and Dynamic Binding?',
+    answer: `**Static Binding (Early Binding):**
+- Resolved at compile time
+- Used for: static methods, final methods, private methods, overloaded methods
+- Faster execution
+
+**Dynamic Binding (Late Binding):**
+- Resolved at runtime
+- Used for: overridden methods (virtual methods)
+- Enables polymorphism
+
+\`\`\`java
+class Animal {
+    static void staticMethod() { System.out.println("Animal static"); }
+    void instanceMethod() { System.out.println("Animal instance"); }
+}
+
+class Dog extends Animal {
+    static void staticMethod() { System.out.println("Dog static"); }
+    void instanceMethod() { System.out.println("Dog instance"); }
+}
+
+Animal a = new Dog();
+a.staticMethod();    // "Animal static" - Static binding
+a.instanceMethod();  // "Dog instance" - Dynamic binding
+\`\`\``,
+    difficulty: 'Medium',
+    companies: ['Amazon', 'Microsoft', 'Oracle'],
+    language: 'java',
+    frequency: 72
+  },
+  {
+    id: 15,
+    question: 'What is Cohesion and Coupling?',
+    answer: `**Cohesion:** How closely related the responsibilities of a module are.
+- High Cohesion = GOOD (single responsibility)
+- Low Cohesion = BAD (does too many things)
+
+**Coupling:** How dependent modules are on each other.
+- Low Coupling = GOOD (independent modules)
+- High Coupling = BAD (changes cascade)
+
+**Goal:** High Cohesion + Low Coupling
+
+**Example of BAD design:**
+\`\`\`java
+class UserService {
+    void registerUser() { }
+    void sendEmail() { }     // Low cohesion
+    void generateReport() { } // Not related!
+}
+\`\`\`
+
+**Example of GOOD design:**
+\`\`\`java
+class UserService {
+    void registerUser() { }
+    void updateUser() { }
+    void deleteUser() { }    // High cohesion
+}
+
+class EmailService {
+    void sendEmail() { }     // Separate concern
+}
+\`\`\``,
+    difficulty: 'Medium',
+    companies: ['Google', 'Amazon', 'Microsoft'],
+    language: 'all',
+    frequency: 75
   }
 ]
 

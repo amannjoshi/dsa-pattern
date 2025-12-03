@@ -1,8 +1,24 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { ArrowLeft, Share2, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
-import { TopologicalSortVisualizer, BFSVisualizer, DFSVisualizer } from '@/components/dsa-theory/GraphVisualizer'
+
+// Lazy load visualizers - only loads when scrolled to
+const TopologicalSortVisualizer = dynamic(
+  () => import('@/components/dsa-theory/GraphVisualizer').then(mod => ({ default: mod.TopologicalSortVisualizer })),
+  { loading: () => <div className="h-96 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const BFSVisualizer = dynamic(
+  () => import('@/components/dsa-theory/GraphVisualizer').then(mod => ({ default: mod.BFSVisualizer })),
+  { loading: () => <div className="h-80 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const DFSVisualizer = dynamic(
+  () => import('@/components/dsa-theory/GraphVisualizer').then(mod => ({ default: mod.DFSVisualizer })),
+  { loading: () => <div className="h-80 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
 
 const topics = [
   {

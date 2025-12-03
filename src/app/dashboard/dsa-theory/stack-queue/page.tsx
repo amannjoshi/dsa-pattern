@@ -1,8 +1,24 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { ArrowLeft, Layers, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
-import { StackVisualizer, QueueVisualizer, CircularQueueVisualizer } from '@/components/dsa-theory/StackQueueVisualizer'
+
+// Lazy load visualizers - only loads when needed
+const StackVisualizer = dynamic(
+  () => import('@/components/dsa-theory/StackQueueVisualizer').then(mod => ({ default: mod.StackVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const QueueVisualizer = dynamic(
+  () => import('@/components/dsa-theory/StackQueueVisualizer').then(mod => ({ default: mod.QueueVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const CircularQueueVisualizer = dynamic(
+  () => import('@/components/dsa-theory/StackQueueVisualizer').then(mod => ({ default: mod.CircularQueueVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
 
 const topics = [
   {

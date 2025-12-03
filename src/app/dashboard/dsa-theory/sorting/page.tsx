@@ -1,15 +1,39 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { ArrowLeft, ArrowUpDown, Clock, Code2, BookOpen, CheckCircle2 } from 'lucide-react'
-import { 
-  BubbleSortVisualizer, 
-  SelectionSortVisualizer, 
-  InsertionSortVisualizer, 
-  MergeSortVisualizer, 
-  QuickSortVisualizer,
-  HeapSortVisualizer
-} from '@/components/dsa-theory/SortingVisualizer'
+
+// Lazy load visualizers - only loads when needed
+const BubbleSortVisualizer = dynamic(
+  () => import('@/components/dsa-theory/SortingVisualizer').then(mod => ({ default: mod.BubbleSortVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const SelectionSortVisualizer = dynamic(
+  () => import('@/components/dsa-theory/SortingVisualizer').then(mod => ({ default: mod.SelectionSortVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const InsertionSortVisualizer = dynamic(
+  () => import('@/components/dsa-theory/SortingVisualizer').then(mod => ({ default: mod.InsertionSortVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const MergeSortVisualizer = dynamic(
+  () => import('@/components/dsa-theory/SortingVisualizer').then(mod => ({ default: mod.MergeSortVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const QuickSortVisualizer = dynamic(
+  () => import('@/components/dsa-theory/SortingVisualizer').then(mod => ({ default: mod.QuickSortVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const HeapSortVisualizer = dynamic(
+  () => import('@/components/dsa-theory/SortingVisualizer').then(mod => ({ default: mod.HeapSortVisualizer })),
+  { loading: () => <div className="h-72 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
 
 const topics = [
   {

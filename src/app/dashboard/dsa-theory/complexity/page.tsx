@@ -1,14 +1,29 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { ArrowLeft, Clock, Code2, BookOpen, Gauge, Timer, HardDrive } from 'lucide-react'
-import { 
-  ComplexityGraphVisualizer, 
-  AsymptoticNotationsVisualizer,
-  ComplexityExamplesVisualizer,
-  MasterTheoremVisualizer,
-  SpaceComplexityVisualizer
-} from '@/components/dsa-theory/ComplexityVisualizer'
+
+// Lazy load visualizers - only loads when needed
+const ComplexityGraphVisualizer = dynamic(
+  () => import('@/components/dsa-theory/ComplexityVisualizer').then(mod => ({ default: mod.ComplexityGraphVisualizer })),
+  { loading: () => <div className="h-80 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const AsymptoticNotationsVisualizer = dynamic(
+  () => import('@/components/dsa-theory/ComplexityVisualizer').then(mod => ({ default: mod.AsymptoticNotationsVisualizer })),
+  { loading: () => <div className="h-64 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const ComplexityExamplesVisualizer = dynamic(
+  () => import('@/components/dsa-theory/ComplexityVisualizer').then(mod => ({ default: mod.ComplexityExamplesVisualizer })),
+  { loading: () => <div className="h-64 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
+
+const SpaceComplexityVisualizer = dynamic(
+  () => import('@/components/dsa-theory/ComplexityVisualizer').then(mod => ({ default: mod.SpaceComplexityVisualizer })),
+  { loading: () => <div className="h-64 animate-pulse bg-zinc-800/50 rounded-xl flex items-center justify-center text-zinc-500">Loading Visualizer...</div>, ssr: false }
+)
 
 const topics = [
   {
@@ -253,7 +268,7 @@ for (int i = 0; i < n; i++) {
   {
     id: 5,
     title: 'Master Theorem',
-    visualizer: 'master' as const,
+    visualizer: null,
     content: `**Master Theorem** solves divide-and-conquer recurrences of the form:
 
 **T(n) = aT(n/b) + O(n^k)**
@@ -555,11 +570,6 @@ export default function ComplexityPage() {
             {topic.visualizer === 'examples' && (
               <div className="mb-4">
                 <ComplexityExamplesVisualizer />
-              </div>
-            )}
-            {topic.visualizer === 'master' && (
-              <div className="mb-4">
-                <MasterTheoremVisualizer />
               </div>
             )}
             {topic.visualizer === 'space' && (
