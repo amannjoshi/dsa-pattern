@@ -1,15 +1,140 @@
 # Project Progress & Handover Guide
 
-**Last Updated:** December 2, 2025 (Late Night)
+**Last Updated:** December 3, 2025
 **Project Name:** W Code (DSA Preparation Platform)
-**Status:** Phase 12 - Advanced Visualizers & Complexity Analysis
+**Status:** Phase 14 - DBMS Theory Section
 
 ## 🚀 Quick Start for New Developers
 
 If you are picking up this project, simply tell Copilot:
 > "Analyze PROGRESS.md and continue from where we left off."
 
-## 📋 What Was Done (Latest Session - Dec 2, 2025 Late Night)
+## 📋 What Was Done (Latest Session - Dec 3, 2025)
+
+### ✅ DBMS Theory Section - COMPLETE!
+
+#### DBMS Main Page - DONE!
+- Location: `src/app/dashboard/dbms/page.tsx`
+- 3 topic cards (DBMS Concepts, SQL Commands, Interview Questions)
+- Download Complete Notes button (links to `/notes/DBMS.pdf`)
+- Interview Prep link to DBMS Interview Questions
+- Why Learn DBMS section
+
+#### DBMS Topic Pages - ALL DONE!
+
+| Topic | Location | Content |
+|-------|----------|---------|
+| DBMS Concepts | `dbms/concepts/page.tsx` | 11 sections: What is DBMS, DBMS vs File System, ACID, Keys, Normalization, ER Diagrams, Transactions, Indexing, Views, Stored Procedures & Triggers, Relational Algebra |
+| SQL Commands | `dbms/sql/page.tsx` | 10 sections: SELECT, INSERT, UPDATE, DELETE, JOINs, Aggregation, Subqueries, Window Functions, DDL, CTEs & Advanced SQL |
+| Interview Questions | `dbms/interview/page.tsx` | 24 questions (12 DBMS + 12 SQL) with filters, difficulty badges, company tags |
+
+#### DBMS Interview Questions - DONE!
+- Location: `src/app/dashboard/dbms/interview/page.tsx`
+- **Filter System**: All / DBMS / SQL category filters
+- **Difficulty Filters**: All / Easy / Medium / Hard
+- **DBMS Questions** (12 questions):
+  - ACID Properties, Normalization (1NF to BCNF), Keys, INNER vs OUTER JOIN
+  - Indexing, Deadlock, Views vs Materialized Views, Transactions & Concurrency
+  - Stored Procedures vs Functions, Triggers, OLTP vs OLAP, CAP Theorem
+- **SQL Questions** (12 questions):
+  - Second highest salary, Find duplicates, DELETE vs TRUNCATE
+  - GROUP BY vs HAVING, UNION vs UNION ALL, Self Join
+  - Running totals (Window Functions), NULL handling, Subqueries vs JOINs
+  - CASE statements, Pivot tables, Recursive CTE
+- **Features**: Expandable Q&A, company tags (Amazon, Google, Meta, Microsoft, Oracle)
+
+#### DBMS Content Highlights
+- **Relational Algebra**: Added as Section 11 in DBMS Concepts
+  - Selection (σ), Projection (π), Union (∪), Set Difference (−)
+  - Cartesian Product (×), Rename (ρ), Natural Join (⋈)
+  - SQL equivalents for each operation
+- **SQL Examples**: Real-world queries with explanations
+- **Interview Tips**: Common interview scenarios
+
+#### Navigation Updated - DONE!
+- Desktop sidebar: Added "DBMS" link with Database icon
+- Mobile nav: Added "DBMS" link
+
+### 📁 Complete DBMS Structure
+```
+src/app/dashboard/dbms/
+├── page.tsx                    # Main landing page
+├── concepts/
+│   └── page.tsx               # DBMS Concepts (11 sections)
+├── sql/
+│   └── page.tsx               # SQL Commands (10 sections)
+└── interview/
+    └── page.tsx               # Interview Questions (24 Q&A)
+```
+
+### 📝 User Action Required
+- **DBMS.pdf**: Add DBMS notes PDF to `public/notes/DBMS.pdf`
+- The download button on DBMS page links to this file
+
+---
+
+### ✅ Computer Network Theory Section - COMPLETE!
+
+#### CN Theory Main Page - DONE!
+- Location: `src/app/dashboard/cn-theory/page.tsx`
+- 6 topic cards (OSI Model, TCP/IP, Network Devices, IP Addressing, Protocols, Network Security)
+- Download Complete Notes button (links to `/notes/CN.pdf`)
+- Interview Prep link to CN Interview Questions
+- Why Learn Computer Network section
+
+#### CN Theory Topic Pages - ALL DONE!
+
+| Topic | Location | Content |
+|-------|----------|---------|
+| OSI Model | `cn-theory/osi-model/page.tsx` | 7 layers with protocols, devices, code examples, interview tips |
+| TCP/IP Model | `cn-theory/tcp-ip/page.tsx` | 4 layers, OSI vs TCP/IP comparison, 3-way handshake, TCP vs UDP |
+| Network Devices | `cn-theory/network-devices/page.tsx` | Router, Switch, Hub, Bridge, Gateway, Firewall, Access Point, Modem |
+| IP Addressing | `cn-theory/ip-addressing/page.tsx` | IPv4 classes, private IPs, subnetting, CIDR, IPv6, NAT |
+| Protocols | `cn-theory/protocols/page.tsx` | HTTP/HTTPS, DNS, DHCP, SMTP/POP3/IMAP, FTP, SSH, TCP/UDP, ICMP/ARP |
+| Network Security | `cn-theory/network-security/page.tsx` | Firewalls, VPN, Encryption, Network Attacks, IDS/IPS, Authentication |
+
+#### CN Interview Questions - DONE!
+- Location: `src/app/dashboard/interview/cn/page.tsx`
+- Company-wise questions from:
+  - **Cisco**: OSI model, Router vs Switch, VLAN, STP, TCP handshake, OSPF
+  - **Zscaler**: Zero Trust, Firewall vs Proxy, SSL inspection, SASE, DNS security
+  - **Juniper Networks**: BGP, QoS, MPLS
+  - **General Networking**: URL in browser, TCP vs UDP, subnetting, ARP, NAT
+- Expandable Q&A format with difficulty badges
+- Interview tips section
+
+#### Navigation Updated - DONE!
+- Desktop sidebar: Added "CN Theory" link with Network icon
+- Mobile nav: Added "CN Theory" link
+
+### 📁 Complete CN Theory Structure
+```
+src/app/dashboard/cn-theory/
+├── page.tsx                    # Main landing page
+├── osi-model/
+│   └── page.tsx               # OSI Model (7 layers)
+├── tcp-ip/
+│   └── page.tsx               # TCP/IP Model (4 layers)
+├── network-devices/
+│   └── page.tsx               # Network Devices (8 devices)
+├── ip-addressing/
+│   └── page.tsx               # IP Addressing (IPv4, IPv6, subnetting)
+├── protocols/
+│   └── page.tsx               # Network Protocols (8 protocols)
+└── network-security/
+    └── page.tsx               # Network Security (6 topics)
+
+src/app/dashboard/interview/cn/
+└── page.tsx                   # CN Interview Questions
+```
+
+### 📝 User Action Required
+- **CN.pdf**: Add Computer Network notes PDF to `public/notes/CN.pdf`
+- The download button on CN Theory page links to this file
+
+---
+
+## 📋 What Was Done (Dec 2, 2025 Late Night)
 
 ### ✅ PR #5: Advanced Visualizers & Complexity Analysis
 

@@ -15,7 +15,9 @@ import {
   X,
   Boxes,
   MessageSquareText,
-  Binary
+  Binary,
+  Network,
+  Database
 } from 'lucide-react'
 import { SignOutButton } from './SignOutButton'
 
@@ -33,6 +35,8 @@ export function MobileNav({ userEmail }: MobileNavProps) {
     { href: '/dashboard/oops', label: 'OOPS', icon: Boxes },
     { href: '/dashboard/interview', label: 'Interview Prep', icon: MessageSquareText },
     { href: '/dashboard/dsa-theory', label: 'DSA Theory', icon: Binary },
+    { href: '/dashboard/cn-theory', label: 'CN', icon: Network },
+    { href: '/dashboard/dbms', label: 'DBMS', icon: Database },
   ]
 
   const accountItems = [

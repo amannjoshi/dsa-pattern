@@ -13,7 +13,9 @@ import {
   User,
   Boxes,
   MessageSquareText,
-  Binary
+  Binary,
+  Network,
+  Database
 } from 'lucide-react'
 import { SignOutButton } from '@/components/dashboard/SignOutButton'
 import { MobileNav } from '@/components/dashboard/MobileNav'
@@ -67,6 +69,14 @@ export default async function DashboardLayout({
           <Link href="/dashboard/dsa-theory" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
             <Binary className="w-5 h-5" />
             DSA Theory
+          </Link>
+          <Link href="/dashboard/cn-theory" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
+            <Network className="w-5 h-5" />
+            CN
+          </Link>
+          <Link href="/dashboard/dbms" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/30 rounded-lg transition-colors">
+            <Database className="w-5 h-5" />
+            DBMS
           </Link>
           <div className="pt-4 pb-2">
             <p className="px-4 text-xs font-semibold text-muted-foreground/50 uppercase tracking-wider">Account</p>
